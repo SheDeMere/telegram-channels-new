@@ -1,0 +1,48 @@
+.channel {
+    width: 200px;
+    padding: 12px 5px 10px 5px;
+    font-family: "Roboto", sans-serif;
+    background: #ffffff;
+    border: 2px solid #2096d4;
+    border-radius: 26px;
+}
+.channel_name {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+    text-transform: uppercase;
+    text-align: center;
+}
+.channel_details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.channel_img img {
+    width: 60px;
+    height: 60px;
+}
+.channel_description {
+    width: 165px;
+    margin-left: 5px;
+}
+.channel_title {
+    font-weight: 300;
+    font-size: 11px;
+    line-height: 13px;
+    color: #444444;
+}
+.channel_link {
+    font-weight: 300;
+    font-size: 10px;
+    line-height: 12px;
+    color: #253bff;
+    margin-right: 5px;
+}
+.channel_subscribers {
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 12px;
+    color: #000000;
+}

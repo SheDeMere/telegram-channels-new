@@ -1,0 +1,70 @@
+.modal {
+    width: 400px;
+    height: 500px;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    position: relative;
+    background: white;
+    z-index: 999;
+    margin: auto;
+    top: 90px;
+
+}
+.modal_back {
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.18);
+}
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+}
+.close {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    padding: 0;
+    cursor: pointer;
+    margin: 10px;
+    opacity: 0.5;
+    transition: 0.5s;
+}
+.close:hover {
+    opacity: 1;
+}
+
+.logo {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+}
+
+.logo_img {
+    width: 70px;
+}
+
+.inputs_group {
+    width: 100%;
+    text-align: center;
+}
+
+.input {
+    width: 80%;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+    position: fixed;
+    left: 0;
+    right: 0;
+
+
+
+}

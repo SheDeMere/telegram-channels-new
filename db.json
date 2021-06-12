@@ -1,0 +1,230 @@
+{
+  "users": [
+    {
+      "name": "Апти",
+      "login": "apti",
+      "password": "12345"
+    },
+    {
+      "name": "Admin",
+      "login": "admin",
+      "password": "admin"
+    },
+    {
+      "name": "Луиза",
+      "login": "luiza",
+      "password": "54321"
+    },
+    {
+      "name": "Аслан",
+      "login": "aslan",
+      "password": "112233"
+    }
+  ],
+
+  "categories": [
+    {
+      "id": 1,
+      "name": "Информативные"
+    },
+    {
+      "id": 2,
+      "name": "Развлекательные"
+    },
+    {
+      "id": 3,
+      "name": "IT"
+    },
+    {
+      "id": 4,
+      "name": "Спортивные"
+    },
+    {
+      "id": 5,
+      "name": "Кулинарные"
+    }
+  ],
+
+  "channels": [
+    {
+      "id": 1,
+      "category": 1,
+      "name": "NEXTA Live",
+      "channelLogin": "@nexta",
+      "imgUrl": "https://c.tcdn.co/059/f7e/059f7ebe-952e-11ea-bf60-8600002b171f/channel128.png",
+      "followers": 1217938,
+      "desk": "Оперативные и эксклюзивные новости Беларуси"
+    },
+    {
+      "id": 2,
+      "category": 1,
+      "name": "Mash",
+      "channelLogin": "@mash",
+      "imgUrl": "https://c.tcdn.co/0b1/ebe/0b1ebe4e-4663-11e7-b1ae-040157cdaf01/channel128.png",
+      "followers": 935982,
+      "desk": "Новости и СМИ"
+    },
+    {
+      "id": 3,
+      "category": 1,
+      "name": "BLACK JOURNAL | Новости Звезд",
+      "channelLogin": "@blackJournall",
+      "imgUrl": "https://c.tcdn.co/f23/60c/f2360c44-7cf0-11ea-9f7e-96000024ad61/channel128.png",
+      "followers": 746332,
+      "desk": "Новости о зведах"
+    },
+    {
+      "id": 4,
+      "category": 1,
+      "name": "Медуза — LIVE",
+      "channelLogin": "@meduza",
+      "imgUrl": "https://c.tcdn.co/ea1/4e3/ea14e3d6-76c9-11e6-b8a1-040157cdaf01/channel128.png",
+      "followers": 452596,
+      "desk": "Официальный телеграм-канал «Медузы»."
+    },
+    {
+      "id": 5,
+      "category": 2,
+      "name": "ТОПОР - Горячие новости",
+      "channelLogin": "@topor",
+      "imgUrl": "https://c.tcdn.co/0d2/764/0d27643e-e45e-11e9-b0ff-96000024ad61/channel128.png",
+      "followers": 1024263,
+      "desk": "Топор вконтакте: https://vk.com/toportg"
+    },
+    {
+      "id": 6,
+      "category": 2,
+      "name": "MDK",
+      "channelLogin": "@mdk",
+      "imgUrl": "https://c.tcdn.co/cb0/96a/cb096ac0-9e14-11e7-a677-0007cb0b8645/channel128.png",
+      "followers": 592183,
+      "desk": "The greatest community in Europe?"
+    },
+    {
+      "id": 7,
+      "category": 2,
+      "name": "Лепра",
+      "channelLogin": "@lepra",
+      "imgUrl": "https://c.tcdn.co/ba3/d5f/ba3d5fde-8ada-11ea-9224-8600002b171f/channel128.png",
+      "followers": 335402,
+      "desk": "Официальный канал сообщества."
+    },
+    {
+      "id": 8,
+      "category": 2,
+      "name": "Бумажный самолётик",
+      "channelLogin": "@paperPlane",
+      "imgUrl": "https://c.tcdn.co/68a/01b/68a01b36-03ae-11e8-8d25-0007cb0b8645/channel128.png",
+      "followers": 73772,
+      "desk": "Сотрудничество и реклама: @godblessmdk"
+    },
+    {
+      "id": 9,
+      "category": 3,
+      "name": "Нетология",
+      "channelLogin": "@netologia",
+      "imgUrl": "https://c.tcdn.co/47f/f73/47ff73f4-84d4-11e6-a52f-040157cdaf01/channel128.png",
+      "followers": 13531,
+      "desk": "В любой непонятной ситуации — учись."
+    },
+    {
+      "id": 10,
+      "category": 3,
+      "name": "КиберЛенинка",
+      "channelLogin": "@CyberLeninka",
+      "imgUrl": "https://c.tcdn.co/afc/bf4/afcbf44c-bb31-11e6-9672-040157cdaf01/channel128.png",
+      "followers": 12244,
+      "desk": "Открытая наука в России."
+    },
+    {
+      "id": 11,
+      "category": 3,
+      "name": "Академия Яндекса",
+      "channelLogin": "@YandexAcademy",
+      "imgUrl": "https://c.tcdn.co/47c/8de/47c8def4-c137-11ea-8a14-96000024ad61/channel128.png",
+      "followers": 10817,
+      "desk": "Школы, лектории, олимпиады и другие образовательные проекты, организованные Яндексом или при его участии. https://academy.yandex.ru"
+    },
+    {
+      "id": 12,
+      "category": 3,
+      "name": "Glob (science news, новости науки)",
+      "channelLogin": "@globchan",
+      "imgUrl": "https://c.tcdn.co/676/0b7/6760b792-ff0c-11e5-a98b-040157cdaf01/channel128.png",
+      "followers": 2049,
+      "desk": "Новостной канал о мире, науке и технологиях."
+    },
+    {
+      "id": 13,
+      "category": 4,
+      "name": "Sports.ru",
+      "channelLogin": "@sportsru",
+      "imgUrl": "https://c.tcdn.co/cd2/515/cd2515a6-5e4c-11eb-945e-96000024ad61/channel128.png",
+      "followers": 114271,
+      "desk": "Лучшее приложение о спорте: trbna.co/SportsApp"
+    },
+    {
+      "id": 14,
+      "category": 4,
+      "name": "Матч ТВ",
+      "channelLogin": "@Match_TV",
+      "imgUrl": "https://c.tcdn.co/54e/978/54e978d0-559a-11eb-ac59-96000024ad61/channel128.png",
+      "followers": 67166,
+      "desk": "t.me/Match_TV"
+    },
+    {
+      "id": 15,
+      "category": 4,
+      "name": "Бегать просто",
+      "channelLogin": "@runforhealth",
+      "imgUrl": "https://c.tcdn.co/006/b22/006b22b4-8455-11e7-bb58-040157cdaf01/channel128.png",
+      "followers": 71064,
+      "desk": "Канал о том, как самым простым способом изменить свое тело, избавиться от вредных привычек и значительно улучшить качество жизни.\n\n"
+    },
+    {
+      "id": 16,
+      "category": 4,
+      "name": "Physical Transformation",
+      "channelLogin": "@fiztransform",
+      "imgUrl": "https://c.tcdn.co/d21/a19/d21a1966-a9c1-11ea-a870-96000024ad61/channel128.png",
+      "followers": 66309,
+      "desk": "Трансформация физической формы на основе гибкой диеты."
+    },
+    {
+      "id": 17,
+      "category": 5,
+      "name": "0Kkal - Низкокалорийные рецепты",
+      "channelLogin": "@OKkal",
+      "imgUrl": "https://c.tcdn.co/63a/5d5/63a5d532-1ed7-11e8-ae84-0007cb0b8645/channel128.png",
+      "followers": 193863,
+      "desk": "Вкусные и низкокалорийные рецепты каждый день! Ешь и при этом худей!"
+    },
+    {
+      "id": 18,
+      "category": 5,
+      "name": "Салаты | Лучшие рецепты",
+      "channelLogin": "@TopSalaty",
+      "imgUrl": "https://c.tcdn.co/bcb/4f1/bcb4f1b8-8586-11ea-b485-96000024ad61/channel128.png",
+      "followers": 67178,
+      "desk": "Салаты и закуски к праздникам и на каждый день!"
+    },
+    {
+      "id": 19,
+      "category": 5,
+      "name": "Соль",
+      "channelLogin": "@thesaltmagazine",
+      "imgUrl": "https://c.tcdn.co/c2c/4f4/c2c4f4d8-48a4-11e9-a479-866420764000/channel128.png",
+      "followers": 120672,
+      "desk": "Где вкусно и недорого пообедать в рабочий полдень? Как сходить в шикарный ресторан и не отдать за ужин всю зарплату? Как каждый вечер пить отличное вино и не разориться? Обо всем этом и многом другом читайте в отличном гастрономическом канале «Соль»."
+    },
+    {
+      "id": 20,
+      "category": 5,
+      "name": "FooDiscovery",
+      "channelLogin": "@Foodiscovery",
+      "imgUrl": "https://c.tcdn.co/747/ec9/747ec964-70f7-11e8-87e2-866420764000/channel128.png",
+      "followers": 33762,
+      "desk": "Все о еде вне дома: новые места, проверенные адреса, советы бывалых и личные впечатления о ресторанах России и мира без купюр."
+    }
+  ]
+}

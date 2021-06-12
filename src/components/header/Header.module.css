@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo_img {
+  width: 30px;
+}
+.logo_text {
+  font-weight: 400;
+  font-size: 20px;
+  color: #2096d4;
+  margin-left: 7px;
+}
+.header_btn button {
+  background: #ffffff;
+  border: 1px solid #2096d4;
+  border-radius: 16px;
+  font-size: 14px;
+  color: #2096d4;
+  width: 90px;
+  height: 30px;
+  cursor: pointer;
+}
+.header_btn button:hover {
+  background-color: #2096d4;
+  color: #ffffff;
+}

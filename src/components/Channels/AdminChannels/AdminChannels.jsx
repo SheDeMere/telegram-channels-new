@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from './UserChannels.module.css'
+import styles from './AdminChannels.module.css'
 
-function UserChannels (props) {
+function AdminChannels (props) {
   return (
     <div className={styles.channel_block}>
       {props.channels.map((channel) => {
@@ -28,4 +28,4 @@ function UserChannels (props) {
   );
 }
 
-export default UserChannels
+export default AdminChannels

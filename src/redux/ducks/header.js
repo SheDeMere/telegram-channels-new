@@ -2,8 +2,9 @@ const initialState = {
   modalWindow: false,
   admin: false,
   user: false,
-  token: false,
-  error: false
+  token: null,
+  error: false,
+  name: ""
 };
 
 const Header = (state = initialState, action) => {
@@ -42,7 +43,15 @@ const Header = (state = initialState, action) => {
         ...state,
         user: true,
         error: false,
-        modalWindow: false
+        modalWindow: false,
+        name: action.payload.name,
+        token: action.payload.token
+      }
+
+    case 'logout/start':
+      return {
+        ...state,
+        token: null
       }
 
     default:
@@ -62,6 +71,13 @@ export const openWindow = () => {
   }
 }
 
+
+export const logoutStart = () => {
+  return {
+    type: 'logout/start'
+  }
+}
+
 export const logged = (login, pass) => (dispatch) => {
     fetch('http://localhost:3001/users')
       .then(res => res.json())
@@ -70,7 +86,7 @@ export const logged = (login, pass) => (dispatch) => {
           if(login === data.login && pass === data.password){
             dispatch({
               type: "access/user",
-              payload: data.token
+              payload: data
             })
 
             if(login === 'admin' && pass === 'admin') {

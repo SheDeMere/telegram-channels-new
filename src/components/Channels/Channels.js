@@ -1,17 +1,28 @@
-import React from "react";
-import GuestChannels from "./GuestChannels/GuestChannels";
-
+import React, { useEffect } from 'react';
+import GuestChannels from './GuestChannels/GuestChannels';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadChannels } from '../../redux/ducks/cards';
+import UserChannels from './UserChannels/UserChannels';
 
 function Channels(props) {
-  return (
-    <div>
+  const dispatch = useDispatch();
 
-      {/*тут будет условие, где будут выводиться либо GuestChannels, либо UserChannels*/}
+  useEffect(() => {
+    dispatch(loadChannels());
+  }, [dispatch]);
 
-      <GuestChannels />
-      {/*<UserChannels/>*/}
-    </div>
-  );
+  const auth = useSelector((state) => {
+    return state.header;
+  });
+  const channels = useSelector((state) => {
+    return state.cards.items
+  });
+
+  if (auth.user) {
+    return <UserChannels channels={channels}/>;
+  }
+  return <GuestChannels channels={channels} />;
 }
 
 export default Channels;
+

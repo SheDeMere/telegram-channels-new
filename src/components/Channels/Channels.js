@@ -3,6 +3,7 @@ import GuestChannels from './GuestChannels/GuestChannels';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadChannels } from '../../redux/ducks/cards';
 import UserChannels from './UserChannels/UserChannels';
+import AdminChannels from './AdminChannels/AdminChannels'
 
 function Channels(props) {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function Channels(props) {
 
   if (auth.user) {
     return <UserChannels channels={channels}/>;
+  }
+  if(auth.admin) {
+    return <AdminChannels channels={channels}/>
   }
   return <GuestChannels channels={channels} />;
 }

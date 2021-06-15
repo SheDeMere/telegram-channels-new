@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./GuestChannels.module.css";
+import { Link} from 'react-router-dom'
 
 function GuestChannels(props) {
 
@@ -10,6 +11,7 @@ function GuestChannels(props) {
   }
   return (
     <div className={styles.channel_block}>
+      <Link to={`/${randomChannel.id}`} >
           <div className={styles.channel}>
             <div className={styles.channel_name}>{randomChannel.name}</div>
             <div className={styles.channel_details}>
@@ -26,6 +28,7 @@ function GuestChannels(props) {
               </div>
             </div>
           </div>
+      </Link>
     </div>
   );
 }

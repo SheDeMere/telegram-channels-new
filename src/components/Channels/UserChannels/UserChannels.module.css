@@ -4,6 +4,11 @@
     flex-wrap: wrap;
     margin-top: 30px;
 }
+.channel_block a{
+    text-decoration: none;
+    align-items: stretch;
+    display: flex;
+}
 .channel {
     width: 200px;
     padding: 12px 5px 10px 5px;

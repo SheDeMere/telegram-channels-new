@@ -10,7 +10,7 @@ function Channel (props) {
   }
   else return (
     <div>
-    <ChannelInfo/>
+    <ChannelInfo channelId={channelId}/>
     </div>
   )
 }

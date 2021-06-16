@@ -1,11 +1,14 @@
 import React from 'react'
 import styles from './UserChannels.module.css'
+import { Link} from 'react-router-dom'
+
 
 function UserChannels (props) {
   return (
     <div className={styles.channel_block}>
       {props.channels.map((channel) => {
         return (
+          <Link to={`/${channel.id}`}>
           <div className={styles.channel}>
             <div className={styles.channel_name}>{channel.name}</div>
             <div className={styles.channel_details}>
@@ -22,6 +25,7 @@ function UserChannels (props) {
               </div>
             </div>
           </div>
+          </Link>
         )
       })}
     </div>

@@ -1,11 +1,13 @@
 import React from 'react'
 import styles from './AdminChannels.module.css'
+import { Link } from 'react-router-dom'
 
 function AdminChannels (props) {
   return (
     <div className={styles.channel_block}>
       {props.channels.map((channel) => {
         return (
+          <Link to={`/${channel.id}`}>
           <div className={styles.channel}>
             <div className={styles.channel_name}>{channel.name}</div>
             <div className={styles.channel_details}>
@@ -22,6 +24,7 @@ function AdminChannels (props) {
               </div>
             </div>
           </div>
+          </Link>
         )
       })}
     </div>

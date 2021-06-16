@@ -33,3 +33,13 @@
   background-color: #2096d4;
   color: #ffffff;
 }
+
+.users {
+  display: flex;
+  align-items: center;
+}
+.userName {
+  margin-right: 5px;
+  font-size: 13px;
+  color: #444444;
+}

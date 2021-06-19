@@ -4,26 +4,22 @@ const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
 
-const channels = router.db.get("channels");
-server.get("/informative", (req, res) => {
-  res.json(channels.filter((channel) => channel.category === 1));
-});
+server.use(middlewares);
+server.use(jsonServer.bodyParser);
 
-server.get("/entertaining", (req, res) => {
-  res.json(channels.filter((channel) => channel.category === 2));
-});
 
-server.get("/it", (req, res) => {
-  res.json(channels.filter((channel) => channel.category === 3));
-});
+const users = router.db.get("users");
 
-server.get("/sports", (req, res) => {
-  res.json(channels.filter((channel) => channel.category === 4));
-});
-
-server.get("/culinary", (req, res) => {
-  res.json(channels.filter((channel) => channel.category === 5));
-});
+server.post("/authorization/login", (req,res) => {
+  const {login, password} = req.body
+  users.toJSON().find(item => {
+      if (login === item.login && password === item.password){
+        res.json(item)
+    }else {
+      return false
+    }
+  })
+})
 
 server.use(middlewares);
 server.use(router);

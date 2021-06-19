@@ -3,22 +3,26 @@
     {
       "name": "Апти",
       "login": "apti",
-      "password": "12345"
+      "password": "12345",
+      "token": "95doFJN903Hh100"
     },
     {
       "name": "Admin",
       "login": "admin",
-      "password": "admin"
+      "password": "admin",
+      "token": "99doFfhN903Hdh199"
     },
     {
       "name": "Луиза",
       "login": "luiza",
-      "password": "54321"
+      "password": "54321",
+      "token": "925doFJN90dsdfss3Hh10120"
     },
     {
       "name": "Аслан",
       "login": "aslan",
-      "password": "112233"
+      "password": "112233",
+      "token": "95doFasdfasJN903Hfasfash100"
     }
   ],
 

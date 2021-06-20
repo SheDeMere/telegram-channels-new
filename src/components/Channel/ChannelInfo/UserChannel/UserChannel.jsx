@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { Rating } from '@material-ui/lab';
 
 function UserChannel(props) {
-  const [value, setValue] = React.useState(3);
+  const [value, setValue] = React.useState(props.rating);
 
   const [modal, setModal] = useState(true);
 
@@ -43,7 +43,13 @@ function UserChannel(props) {
                 </div>
                 <div className={styles.channel_reviews}>
                   <div className={styles.reviews_title}>Отзывы:</div>
-                  <div>Тут будут отзывы</div>
+                  {props.comments.map((comment)=>{
+                    return (
+                      <div className={styles.review_wrap}>
+                        <span className={styles.review_name}>{comment.name}:</span>
+                        <span className={styles.review_text}>{comment.body}</span>
+                      </div>
+                    )})}
                   <form className={styles.review_form}>
                     <input type="text" placeholder={'Оставьте отзыв'} />
                     <button className={styles.review_btn}>➤</button>

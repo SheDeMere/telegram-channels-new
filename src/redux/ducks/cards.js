@@ -34,6 +34,26 @@ const Cards = (state = initialState, action) => {
   }
 };
 
+export const editChannel = (name, login, link, followers, desk, id) => {
+  fetch(`http://localhost:3001/channels/${id}`,{
+    method: 'PATCH',
+    body: {
+      name: name,
+      channelLogin: login,
+      imgUrl: link,
+      followers: followers,
+      desk: desk
+    },
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8'
+    },
+  })
+    .then(res => res.json())
+    .then(json => {
+      console.log(json)
+    })
+}
+
 export function loadChannels() {
   return (dispatch) => {
     dispatch({

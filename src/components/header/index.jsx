@@ -3,15 +3,21 @@ import Logo from './Logo'
 import Login from './Login'
 import styles from './Header.module.css'
 import Authorization from './authorization'
-import { Route } from 'react-router-dom'
+import { Route, Switch, useParams } from 'react-router-dom'
+import EditName from '../Channel/ChannelInfo/AdminChannel/editName'
 function Header(props) {
   return (
     <div className={styles.header}>
       <Logo />
       <Login />
-      <Route path='/login'>
-        <Authorization />
-      </Route>
+      <Switch>
+        <Route path='/login'>
+          <Authorization />
+        </Route>
+        <Route path='/edit/:id?'>
+          <EditName />
+        </Route>
+      </Switch>
     </div>
   );
 }

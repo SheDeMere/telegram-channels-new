@@ -5,10 +5,11 @@ import Header from './header/index'
 import Channels from './Channels/Channels'
 import Channel from './Channel/Channel'
 
+
 function App() {
   return (
     <div className="container">
-      <Header/>
+          <Header/>
       <Switch>
         <Route path="/:id?">
           <Channels/>

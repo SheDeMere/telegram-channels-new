@@ -102,3 +102,17 @@
     color: gray;
     margin-left: 10px;
 }
+.review_wrap {
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+.review_name {
+    font-size: 16px;
+    color: gray;
+    font-style: italic;
+}
+.review_text {
+    font-size: 16px;
+    color: black;
+    padding-left: 5px;
+}

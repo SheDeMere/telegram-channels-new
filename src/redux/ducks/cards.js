@@ -1,6 +1,8 @@
 const initialState = {
   loading: false,
   items: [],
+  ratings:[],
+  comments:[]
 };
 
 const Cards = (state = initialState, action) => {
@@ -15,7 +17,17 @@ const Cards = (state = initialState, action) => {
         ...state,
         loading: false,
         items:action.payload
-      }
+      };
+    case 'ratings/load/success':
+      return {
+        ...state,
+        ratings: action.payload
+      };
+    case 'comments/load/success':
+      return {
+        ...state,
+        comments: action.payload
+      };
 
     default:
       return state;
@@ -35,6 +47,40 @@ export function loadChannels() {
         return dispatch({
           type: 'channels/load/success',
           payload: json,
+        });
+      });
+  };
+}
+export function loadRatings(id) {
+  return (dispatch) => {
+    dispatch({
+      type: 'ratings/load/start',
+    });
+    fetch(`http://localhost:3001/ratings?channelId=${id}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        return dispatch({
+          type: 'ratings/load/success',
+          payload: json[0].star,
+        });
+      });
+  };
+}
+export function loadComments(id) {
+  return (dispatch) => {
+    dispatch({
+      type: 'comments/load/start',
+    });
+    fetch(`http://localhost:3001/comments?channelId=${id}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        return dispatch({
+          type: 'comments/load/success',
+          payload: json[0].comment,
         });
       });
   };

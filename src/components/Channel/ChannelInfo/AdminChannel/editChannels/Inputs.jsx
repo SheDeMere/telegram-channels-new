@@ -13,8 +13,11 @@ function Inputs (props) {
   const data = useSelector(state => state.cards.selectedChannel)
 
   const handleClick = () => {
+    setInfo(true)
     dispatch(editChannel(category ,name, login, link, followers, desk, id));
   };
+
+  const [info, setInfo] = useState(false)
 
   const [name, setName] = useState(data.name);
 
@@ -97,6 +100,7 @@ function Inputs (props) {
             onChange={(e) => setDesk(e.target.value)}
           />
         </div>
+        {info ? <p style={{color: 'green', opacity: '0.8', fontWeight: 300}}>Данные успешно сохранены!</p> : ''}
         <Button variant="outlined" color="primary" onClick={handleClick}>
           Сохранить
         </Button>

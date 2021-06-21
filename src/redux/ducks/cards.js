@@ -2,7 +2,8 @@ const initialState = {
   loading: false,
   items: [],
   ratings:[],
-  comments:[]
+  comments:[],
+  selectedChannel: []
 };
 
 const Cards = (state = initialState, action) => {
@@ -29,29 +30,52 @@ const Cards = (state = initialState, action) => {
         comments: action.payload
       };
 
+    case 'edit/items':
+      return {
+        ...state,
+        items: action.payload
+      }
+
+    case 'select/channel':
+      return {
+        ...state,
+        selectedChannel: action.payload
+      }
     default:
       return state;
   }
 };
 
-export const editChannel = (name, login, link, followers, desk, id) => {
-  fetch(`http://localhost:3001/channels/${id}`,{
-    method: 'PATCH',
-    body: {
-      name: name,
-      channelLogin: login,
-      imgUrl: link,
-      followers: followers,
-      desk: desk
-    },
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8'
-    },
-  })
+
+export const selectedChannel = (id) => (dispatch) => {
+  fetch(`http://localhost:3001/channels/${id}`)
     .then(res => res.json())
     .then(json => {
-      console.log(json)
+      dispatch({
+        type: 'select/channel',
+        payload: json
+      })
     })
+}
+
+export const editChannel = (category,name, login, link, followers, desk, id) => (dispatch) => {
+  fetch(`http://localhost:3001/channels/${id}`,{
+    method: 'PATCH',
+    body: JSON.stringify(
+      {
+        categoryId: category,
+        name: name,
+        channelLogin: login,
+        imgUrl: link,
+        followers: followers,
+        desk: desk
+      }
+    ),
+    headers: {
+      'Content-type': 'application/json; charset=utf-8'
+    },
+  })
+
 }
 
 export function loadChannels() {

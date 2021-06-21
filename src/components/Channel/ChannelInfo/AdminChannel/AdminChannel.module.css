@@ -65,6 +65,11 @@
     text-align: center;
     margin: 20px 0;
 }
+
+.channel_img img {
+    height: 128px;
+    width: 128px;
+}
 .channel_rating {
     text-align: center;
 }

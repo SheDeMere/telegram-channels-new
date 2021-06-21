@@ -21,7 +21,7 @@ server.post("/authorization/login", (req,res) => {
   })
 })
 
-server.post(())
+
 
 server.use(middlewares);
 server.use(router);

@@ -4,7 +4,7 @@ import { Link, Route, useParams } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import { Rating } from '@material-ui/lab'
-import EditName from './editName'
+import EditName from './editChannels'
 
 function AdminChannel (props) {
   const [value, setValue] = React.useState(props.rating);

@@ -5,7 +5,7 @@ import { loadChannels } from '../../redux/ducks/cards';
 import UserChannels from './UserChannels/UserChannels';
 import AdminChannels from './AdminChannels/AdminChannels'
 import { Route } from 'react-router-dom'
-import EditName from '../Channel/ChannelInfo/AdminChannel/editName'
+import EditName from '../Channel/ChannelInfo/AdminChannel/editChannels'
 
 function Channels(props) {
   const dispatch = useDispatch();

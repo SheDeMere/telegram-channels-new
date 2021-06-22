@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import UserChannel from './UserChannel/UserChannel';
 import AdminChannel from './AdminChannel/AdminChannel';
 import GuestChannel from './GuestChannel/GuestChannel';
-import { loadComments, loadRatings } from '../../../redux/ducks/cards'
+import { loadComments, loadRatings, selectedChannel } from '../../../redux/ducks/cards'
 
 function ChannelInfo(props) {
   const dispatch = useDispatch();
@@ -13,6 +13,9 @@ function ChannelInfo(props) {
   useEffect(()=>{
     dispatch(loadComments(props.channelId))
   }, [dispatch]);
+  useEffect(() => {
+    dispatch(selectedChannel(props.channelId))
+  }, [dispatch])
 
   const channels = useSelector((state) => {
     return state.cards.items;

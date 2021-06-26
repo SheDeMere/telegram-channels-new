@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import UserChannel from './UserChannel/UserChannel';
 import AdminChannel from './AdminChannel/AdminChannel';
 import GuestChannel from './GuestChannel/GuestChannel';
-import { loadComments, loadRatings } from '../../../redux/ducks/cards'
+import { loadRatings, loadReviews, selectedChannel } from '../../../redux/ducks/cards'
 
 function ChannelInfo(props) {
   const dispatch = useDispatch();
@@ -11,8 +11,11 @@ function ChannelInfo(props) {
     dispatch(loadRatings(props.channelId));
   }, [dispatch]);
   useEffect(()=>{
-    dispatch(loadComments(props.channelId))
+    dispatch(loadReviews(props.channelId))
   }, [dispatch]);
+  useEffect(() => {
+    dispatch(selectedChannel(props.channelId))
+  }, [dispatch])
 
   const channels = useSelector((state) => {
     return state.cards.items;
@@ -24,8 +27,8 @@ function ChannelInfo(props) {
     return state.cards.ratings;
   });
 
-  const comments = useSelector((state)=>{
-    return state.cards.comments
+  const reviews = useSelector((state)=>{
+    return state.cards.reviews
   });
 
   const auth = useSelector((state) => {
@@ -33,12 +36,12 @@ function ChannelInfo(props) {
   });
 
   if (auth.user) {
-    return <UserChannel channel={channel} rating={rating} comments={comments}/>;
+    return <UserChannel channel={channel} rating={rating} reviews={reviews}/>;
   }
   if (auth.admin) {
-    return <AdminChannel channel={channel} rating={rating} comments={comments}/>;
+    return <AdminChannel channel={channel} rating={rating} reviews={reviews}/>;
   }
-  return <GuestChannel channel={channel} rating={rating} comments={comments}/>;
+  return <GuestChannel channel={channel} rating={rating} reviews={reviews}/>;
 }
 
 export default ChannelInfo;

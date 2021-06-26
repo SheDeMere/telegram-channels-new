@@ -25,6 +25,7 @@ function AdminChannels (props) {
             </div>
           </div>
           </Link>
+
         )
       })}
     </div>

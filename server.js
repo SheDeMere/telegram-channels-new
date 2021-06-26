@@ -1,32 +1,39 @@
 // server.js
-const jsonServer = require("json-server");
+const jsonServer = require('json-server');
 const server = jsonServer.create();
-const router = jsonServer.router("db.json");
+const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 
-const channels = router.db.get("channels");
-server.get("/informative", (req, res) => {
-  res.json(channels.filter((channel) => channel.category === 1));
+server.use(middlewares);
+server.use(jsonServer.bodyParser);
+
+const users = router.db.get('users');
+
+server.post('/authorization/login', (req, res) => {
+  const { login, password } = req.body;
+  users.toJSON().find((item) => {
+    if (login === item.login && password === item.password) {
+      res.json(item);
+    } else {
+      return false;
+    }
+  });
 });
 
-server.get("/entertaining", (req, res) => {
-  res.json(channels.filter((channel) => channel.category === 2));
-});
+// добавление отзыва для определенного канала
 
-server.get("/it", (req, res) => {
-  res.json(channels.filter((channel) => channel.category === 3));
-});
+// Удаление отзыва
 
-server.get("/sports", (req, res) => {
-  res.json(channels.filter((channel) => channel.category === 4));
-});
 
-server.get("/culinary", (req, res) => {
-  res.json(channels.filter((channel) => channel.category === 5));
-});
+
+
+
+
+
+
 
 server.use(middlewares);
 server.use(router);
 server.listen(3001, () => {
-  console.log("JSON Server is running");
+  console.log('JSON Server is running');
 });

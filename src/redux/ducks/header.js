@@ -2,7 +2,7 @@ const initialState = {
   modalWindow: false,
   admin: false,
   user: false,
-  token: null,
+  token:  null,
   error: false,
   name: ""
 };
@@ -73,29 +73,33 @@ export const openWindow = () => {
 
 
 export const logoutStart = () => {
+  localStorage.removeItem('token')
   return {
     type: 'logout/start'
   }
 }
 
-export const logged = (login, pass) => (dispatch) => {
-    fetch('http://localhost:3001/users')
+export const setAuth = (login, password) => (dispatch) => {
+    fetch(`http://localhost:3001/authorization/login`, {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json' },
+      body: JSON.stringify({
+        login: login,
+        password: password
+      })
+    })
       .then(res => res.json())
       .then(json => {
-        json.find(data => {
-          if(login === data.login && pass === data.password){
-            dispatch({
-              type: "access/user",
-              payload: data
-            })
-
-            if(login === 'admin' && pass === 'admin') {
-              dispatch({type: 'access/admin'})
-            }
-          }else {
-            dispatch({type: 'message/error'})
-          }
+        localStorage.setItem('token', json.token)
+        dispatch({
+          type: 'access/user',
+          payload: json,
         })
+        if (json.login === 'admin' && json.password === 'admin') {
+          dispatch({
+            type: 'access/admin'
+          })
+        }
       })
 }
 

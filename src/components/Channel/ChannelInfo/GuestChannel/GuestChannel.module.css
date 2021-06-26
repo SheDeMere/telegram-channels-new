@@ -10,6 +10,7 @@
     padding: 2rem;
     transition: opacity 0.25s;
     z-index: 3;
+    border-radius: 5px;
 }
 .modal.show {
     visibility: visible;
@@ -50,17 +51,33 @@
     cursor: pointer;
 }
 .channel_card {
-    width: 500px;
+    width: 1000px;
     height: 500px;
+    font-family: "Roboto", sans-serif;
+}
+.channel_wrap{
+    display: flex;
+    justify-content: space-between;
+    height: 500px;
+}
+.channel_info {
+    width: 400px;
+    align-self: center;
 }
 .channel_name {
     text-align: center;
     font-size: 22px;
     font-weight: 700;
+    width: 300px;
+    margin: 0 auto;
 }
 .channel_img {
     text-align: center;
     margin: 20px 0;
+}
+.channel_img img {
+    height: 128px;
+    width: 128px;
 }
 .channel_rating {
     text-align: center;
@@ -69,14 +86,21 @@
     color: gray;
     font-size: 18px;
 }
+.channel_reviews {
+    border-left: lightblue 1px solid;
+    padding-left: 20px;
+    width: 580px;
+}
 .reviews_title {
-    font-size: 18px;
-    color: gray;
-    margin: 10px 0;
+    font-size: 26px;
+    color: lightblue;
+    font-weight: 700;
+    margin-bottom: 10px;
 }
 .review_wrap {
     margin-bottom: 10px;
     font-family: 'Roboto', sans-serif;
+    padding-right: 30px ;
 }
 .review_name {
     font-size: 16px;

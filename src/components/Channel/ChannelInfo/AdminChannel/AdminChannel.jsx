@@ -1,14 +1,32 @@
 import React, { useState } from 'react'
 import styles from './AdminChannel.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import { Rating } from '@material-ui/lab'
+import { addReview, deleteReview } from '../../../../redux/ducks/cards'
+import { useDispatch, useSelector } from 'react-redux'
 
 function AdminChannel (props) {
+  const dispatch = useDispatch();
   const [value, setValue] = React.useState(props.rating);
 
+  const id = parseInt(useParams().id);
+
   const [modal, setModal] = useState(true);
+
+  const [text, setText] = useState('');
+
+  const userName = useSelector(state => {
+    return state.header.name
+  })
+
+  const handleAddReview = (channelId, text, userName) => {
+    dispatch(addReview(channelId, text, userName))
+  };
+
+  const handleDeleteReview = (id) => {dispatch(deleteReview(id))}
+
   return (
     <div>
       <div
@@ -27,8 +45,12 @@ function AdminChannel (props) {
               <div>
                 <div className={styles.channel_settings}>
                   <button className={styles.channel_delete}>Удалить канал</button>
-                  <button className={styles.channel_edit}>Изменить канал</button>
+                  <Link to={`/edit/${id}?`}>
+                    <button className={styles.channel_edit}>Изменить канал</button>
+                  </Link>
                 </div>
+                <div className={styles.channel_wrap}>
+                <div className={styles.channel_info}>
                 <div className={styles.channel_name}>{channel.name}</div>
                 <div className={styles.channel_img}>
                   <img src={channel.imgUrl} alt="" />
@@ -44,20 +66,38 @@ function AdminChannel (props) {
                     <Rating name="read-only" value={value} readOnly />
                   </Box>
                 </div>
+                </div>
                 <div className={styles.channel_reviews}>
                   <div className={styles.reviews_title}>Отзывы:</div>
-                  {props.comments.map((comment)=>{
+                  {props.reviews.map((item)=>{
                     return (
-                      <div className={styles.review_wrap}>
-                        <span className={styles.review_name}>{comment.name}:</span>
-                        <span className={styles.review_text}>{comment.body}</span>
+                      <div className={styles.review_wrap} >
+                      <div>
+                        <span className={styles.review_name}>{item.name}:</span>
+                        <span className={styles.review_text}>{item.text}</span>
+                      </div>
+                    <button
+                      className={styles.review_delete_btn}
+                      onClick={()=>(handleDeleteReview(item.id))}
+                    >❌</button>
                       </div>
                     )})}
                   <form className={styles.review_form}>
-                    <input type="text" placeholder={'Оставьте отзыв'} />
-                    <button className={styles.review_btn}>➤</button>
+                    <input
+                      type="text"
+                      placeholder={'Оставьте отзыв'}
+                      value={text}
+                      onChange={(e) => setText(e.target.value)}
+                    />
+                    <Link to={`/${channel.id}`}>
+                    <button
+                      className={styles.review_btn}
+                      onClick={()=>handleAddReview(channel.id, text, userName)}
+                    >➤</button>
+                    </Link>
                   </form>
                 </div>
+              </div>
               </div>
             );
           })}
@@ -69,6 +109,7 @@ function AdminChannel (props) {
         } `}
       />
     </div>
+
   )
 }
 

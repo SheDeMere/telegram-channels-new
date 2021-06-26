@@ -50,6 +50,8 @@ function AdminChannel (props) {
                     <button className={styles.channel_edit}>Изменить канал</button>
                   </Link>
                 </div>
+                <div className={styles.channel_wrap}>
+                <div className={styles.channel_info}>
                 <div className={styles.channel_name}>{channel.name}</div>
                 <div className={styles.channel_img}>
                   <img src={channel.imgUrl} alt="" />
@@ -64,6 +66,7 @@ function AdminChannel (props) {
                     </Typography>
                     <Rating name="read-only" value={value} readOnly />
                   </Box>
+                </div>
                 </div>
                 <div className={styles.channel_reviews}>
                   <div className={styles.reviews_title}>Отзывы:</div>
@@ -94,6 +97,7 @@ function AdminChannel (props) {
                     </Link>
                   </form>
                 </div>
+              </div>
               </div>
             );
           })}

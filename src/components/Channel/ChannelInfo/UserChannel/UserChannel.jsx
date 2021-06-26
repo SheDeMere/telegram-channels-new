@@ -38,7 +38,8 @@ const handleAddReview = (channelId, text, userName) => {
         <div className={styles.channel_card}>
           {props.channel.map((channel) => {
             return (
-              <div>
+              <div className={styles.channel_wrap}>
+                <div className={styles.channel_info}>
                 <div className={styles.channel_name}>{channel.name}</div>
                 <div className={styles.channel_img}>
                   <img src={channel.imgUrl} alt="" />
@@ -53,6 +54,7 @@ const handleAddReview = (channelId, text, userName) => {
                     </Typography>
                     <Rating name="read-only" value={value} readOnly />
                   </Box>
+                </div>
                 </div>
                 <div className={styles.channel_reviews}>
                   <div className={styles.reviews_title}>Отзывы:</div>

@@ -2,7 +2,7 @@ const initialState = {
   loading: false,
   items: [],
   ratings:[],
-  comments:[],
+  reviews:[],
   selectedChannel: []
 };
 
@@ -24,10 +24,10 @@ const Cards = (state = initialState, action) => {
         ...state,
         ratings: action.payload
       };
-    case 'comments/load/success':
+    case 'reviews/load/success':
       return {
         ...state,
-        comments: action.payload
+        reviews: action.payload
       };
 
     case 'edit/items':
@@ -41,6 +41,16 @@ const Cards = (state = initialState, action) => {
         ...state,
         selectedChannel: action.payload
       }
+
+    case 'user/review/add':
+      return {
+        ...state,
+        reviews: [
+          ...state.reviews,
+          action.payload
+        ]
+      }
+
     default:
       return state;
   }
@@ -112,23 +122,48 @@ export function loadRatings(id) {
       });
   };
 }
-export function loadComments(id) {
+export function loadReviews(id) {
   return (dispatch) => {
     dispatch({
-      type: 'comments/load/start',
+      type: 'reviews/load/start',
     });
-    fetch(`http://localhost:3001/comments?channelId=${id}`)
+    fetch(`http://localhost:3001/reviews?channelId=${id}`)
       .then((response) => {
         return response.json();
       })
       .then((json) => {
         return dispatch({
-          type: 'comments/load/success',
-          payload: json[0].comment,
+          type: 'reviews/load/success',
+          payload: json,
         });
       });
   };
 }
+
+export function addReview(channelId, text, userName) {
+
+  return (dispatch) => {
+    fetch(`http://localhost:3001/reviews?channelId=${channelId}`, {
+      method: 'POST',
+      body: JSON.stringify({
+            "channelId": channelId,
+            "name": userName,
+            "text":text
+      }),
+      headers: {
+        'Content-type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        dispatch({
+          type: 'user/review/add',
+          payload: json
+        })});
+  }}
+
+
 
 //тут будут санки
 

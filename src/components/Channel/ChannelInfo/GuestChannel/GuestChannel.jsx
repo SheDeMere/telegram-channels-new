@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import styles from './GuestChannel.module.css';
 import { Link } from 'react-router-dom';
 import { Rating } from '@material-ui/lab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { useDispatch, useSelector } from 'react-redux'
-import { loadRatings } from '../../../../redux/ducks/cards'
 
 function GuestChannel(props) {
 
   const [value, setValue] = React.useState(props.rating);
-
 
   const [modal, setModal] = useState(true);
   return (
@@ -42,11 +39,11 @@ function GuestChannel(props) {
                 </div>
                 <div className={styles.channel_reviews}>
                   <div className={styles.reviews_title}>Отзывы:</div>
-                  {props.comments.map((comment)=>{
+                  {props.reviews.map((item)=>{
                     return (
                       <div className={styles.review_wrap}>
-                      <span className={styles.review_name}>{comment.name}:</span>
-                        <span className={styles.review_text}>{comment.body}</span>
+                      <span className={styles.review_name}>{item.name}:</span>
+                        <span className={styles.review_text}>{item.text}</span>
                       </div>
                     )})}
                 </div>

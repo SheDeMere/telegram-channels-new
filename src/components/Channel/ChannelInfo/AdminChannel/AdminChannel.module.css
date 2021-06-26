@@ -50,8 +50,8 @@
     cursor: pointer;
 }
 .channel_card {
-    width: 500px;
-    height: 550px;
+    width: 600px;
+    height: 600px;
     font-family: "Roboto", sans-serif;
 }
 .channel_name {
@@ -95,7 +95,7 @@
     padding:10px;
     border-radius:10px;
     box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-    min-width: 450px;
+    min-width: 550px;
     border: none;
     color: #444444;
     font-family: 'Roboto', sans-serif;
@@ -137,6 +137,11 @@
 .review_wrap {
     margin-bottom: 10px;
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 10px;
 }
 .review_name {
     font-size: 16px;
@@ -147,4 +152,10 @@
     font-size: 16px;
     color: black;
     padding-left: 5px;
+}
+.review_delete_btn {
+    font-size: 16px;
+    color: lightcoral;
+    margin-left: 5px;
+    cursor: pointer;
 }

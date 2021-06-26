@@ -4,11 +4,24 @@ import { Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { Rating } from '@material-ui/lab';
+import { useDispatch, useSelector } from 'react-redux';
+import { addReview } from '../../../../redux/ducks/cards';
 
 function UserChannel(props) {
+  const dispatch = useDispatch();
   const [value, setValue] = React.useState(props.rating);
 
   const [modal, setModal] = useState(true);
+
+  const [text, setText] = useState('');
+
+  const userName = useSelector(state => {
+    return state.header.name
+  })
+
+const handleAddReview = (channelId, text, userName) => {
+   dispatch(addReview(channelId, text, userName))
+};
 
   return (
     <div>
@@ -43,16 +56,33 @@ function UserChannel(props) {
                 </div>
                 <div className={styles.channel_reviews}>
                   <div className={styles.reviews_title}>Отзывы:</div>
-                  {props.comments.map((comment)=>{
+                  {props.reviews.map((item) => {
                     return (
                       <div className={styles.review_wrap}>
-                        <span className={styles.review_name}>{comment.name}:</span>
-                        <span className={styles.review_text}>{comment.body}</span>
+                        <span className={styles.review_name}>
+                          {item.name}:
+                        </span>
+                        <span className={styles.review_text}>
+                          {item.text}
+                        </span>
                       </div>
-                    )})}
+                    );
+                  })}
                   <form className={styles.review_form}>
-                    <input type="text" placeholder={'Оставьте отзыв'} />
-                    <button className={styles.review_btn}>➤</button>
+                    <input
+                      type="text"
+                      placeholder={'Оставьте отзыв'}
+                      value={text}
+                      onChange={(e) => setText(e.target.value)}
+                    />
+                    <Link to={`/${channel.id}`}>
+                      <button
+                        className={styles.review_btn}
+                        onClick={()=>handleAddReview(channel.id, text, userName)}
+                      >
+                        ➤
+                      </button>
+                    </Link>
                   </form>
                 </div>
               </div>

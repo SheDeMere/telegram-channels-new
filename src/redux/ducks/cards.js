@@ -1,9 +1,9 @@
 const initialState = {
   loading: false,
   items: [],
-  ratings:[],
-  reviews:[],
-  selectedChannel: []
+  ratings: [],
+  reviews: [],
+  selectedChannel: [],
 };
 
 const Cards = (state = initialState, action) => {
@@ -11,82 +11,83 @@ const Cards = (state = initialState, action) => {
     case 'channels/load/start':
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case 'channels/load/success':
       return {
         ...state,
         loading: false,
-        items:action.payload
+        items: action.payload,
       };
     case 'ratings/load/success':
       return {
         ...state,
-        ratings: action.payload
+        ratings: action.payload,
       };
     case 'reviews/load/success':
       return {
         ...state,
-        reviews: action.payload
+        reviews: action.payload,
       };
-
     case 'edit/items':
       return {
         ...state,
-        items: action.payload
-      }
-
+        items: action.payload,
+      };
     case 'select/channel':
       return {
         ...state,
-        selectedChannel: action.payload
-      }
-
+        selectedChannel: action.payload,
+      };
     case 'user/review/add':
       return {
         ...state,
-        reviews: [
-          ...state.reviews,
-          action.payload
-        ]
-      }
+        reviews: [...state.reviews, action.payload],
+      };
+    case 'admin/review/delete':
+      return {
+        ...state,
+        reviews: state.reviews.filter((item) => {
+          if (action.payload === item.id) {
+            return false;
+          }
+          return item;
+        }),
+      };
 
     default:
       return state;
   }
 };
 
-
 export const selectedChannel = (id) => (dispatch) => {
   fetch(`http://localhost:3001/channels/${id}`)
-    .then(res => res.json())
-    .then(json => {
+    .then((res) => res.json())
+    .then((json) => {
       dispatch({
         type: 'select/channel',
-        payload: json
-      })
-    })
-}
+        payload: json,
+      });
+    });
+};
 
-export const editChannel = (category,name, login, link, followers, desk, id) => (dispatch) => {
-  fetch(`http://localhost:3001/channels/${id}`,{
-    method: 'PATCH',
-    body: JSON.stringify(
-      {
+export const editChannel =
+  (category, name, login, link, followers, desk, id) => (dispatch) => {
+    fetch(`http://localhost:3001/channels/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
         categoryId: category,
         name: name,
         channelLogin: login,
         imgUrl: link,
         followers: followers,
-        desk: desk
-      }
-    ),
-    headers: {
-      'Content-type': 'application/json; charset=utf-8'
-    },
-  })
-
-}
+        desk: desk,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=utf-8',
+      },
+    });
+  };
 
 export function loadChannels() {
   return (dispatch) => {
@@ -141,14 +142,13 @@ export function loadReviews(id) {
 }
 
 export function addReview(channelId, text, userName) {
-
   return (dispatch) => {
     fetch(`http://localhost:3001/reviews?channelId=${channelId}`, {
       method: 'POST',
       body: JSON.stringify({
-            "channelId": channelId,
-            "name": userName,
-            "text":text
+        channelId: channelId,
+        name: userName,
+        text: text,
       }),
       headers: {
         'Content-type': 'application/json',
@@ -159,11 +159,26 @@ export function addReview(channelId, text, userName) {
       .then((json) => {
         dispatch({
           type: 'user/review/add',
-          payload: json
-        })});
-  }}
+          payload: json,
+        });
+      });
+  };
+}
 
-
+export function deleteReview(id) {
+  return (dispatch) => {
+    fetch(`http://localhost:3001/reviews/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        dispatch({
+          type: 'admin/review/delete',
+          payload: id,
+        });
+      });
+  };
+}
 
 //тут будут санки
 

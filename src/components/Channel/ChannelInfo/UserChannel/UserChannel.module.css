@@ -89,6 +89,7 @@
 .channel_reviews {
     border-left: lightblue 1px solid;
     padding-left: 20px;
+    padding-right: 10px;
     width: 580px;
 }
 .reviews_title {

@@ -174,4 +174,7 @@
     color: lightcoral;
     margin-left: 5px;
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
 }

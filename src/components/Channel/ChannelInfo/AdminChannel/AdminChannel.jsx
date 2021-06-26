@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import { Rating } from '@material-ui/lab'
-import { addReview } from '../../../../redux/ducks/cards'
+import { addReview, deleteReview } from '../../../../redux/ducks/cards'
 import { useDispatch, useSelector } from 'react-redux'
 
 function AdminChannel (props) {
@@ -25,8 +25,7 @@ function AdminChannel (props) {
     dispatch(addReview(channelId, text, userName))
   };
 
-
- // const handleDeleteReview = () => {dispatch(deleteReview())}
+  const handleDeleteReview = (id) => {dispatch(deleteReview(id))}
 
   return (
     <div>
@@ -77,9 +76,10 @@ function AdminChannel (props) {
                         <span className={styles.review_name}>{item.name}:</span>
                         <span className={styles.review_text}>{item.text}</span>
                       </div>
-                    <div
+                    <button
                       className={styles.review_delete_btn}
-                    >❌</div>
+                      onClick={()=>(handleDeleteReview(item.id))}
+                    >❌</button>
                       </div>
                     )})}
                   <form className={styles.review_form}>

@@ -8,6 +8,8 @@ import {openDeleteChannelModal } from '../../../../redux/ducks/cards'
 import { useDispatch, useSelector } from 'react-redux'
 import DeleteChannel from './deleteChannels'
 import { addReview, deleteReview } from '../../../../redux/ducks/reviews'
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function AdminChannel (props) {
   const dispatch = useDispatch();
@@ -60,9 +62,9 @@ function AdminChannel (props) {
                   <button
                     className={styles.channel_delete}
                     onClick={()=>handleOpenDeleteChannelModal(showDeleteChannelModal)}
-                  >Удалить канал</button>
+                  ><DeleteIcon/></button>
                   <Link to={`/edit/${id}?`}>
-                    <button className={styles.channel_edit}>Изменить канал</button>
+                    <button className={styles.channel_edit}> <EditIcon/> </button>
                   </Link>
                 </div>
                 <div className={styles.channel_wrap}>

@@ -5,6 +5,11 @@ const initialState = {
 
 const Reviews = (state = initialState, action) => {
   switch (action.type) {
+    case 'reviews/load/start':
+      return {
+        ...state,
+        loading: true,
+      }
 
     case 'reviews/load/success':
       return {

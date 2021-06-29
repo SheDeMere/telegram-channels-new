@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import UserChannel from './UserChannel/UserChannel';
 import AdminChannel from './AdminChannel/AdminChannel';
 import GuestChannel from './GuestChannel/GuestChannel';
-import {selectedChannel } from '../../../redux/ducks/cards'
-import { loadRatings } from '../../../redux/ducks/ratings'
-import { loadReviews } from '../../../redux/ducks/reviews'
+import {selectedChannel } from '../../../redux/ducks/cards';
+import { loadRatings } from '../../../redux/ducks/ratings';
+import { loadReviews } from '../../../redux/ducks/reviews';
 
 function ChannelInfo(props) {
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ function ChannelInfo(props) {
   const channels = useSelector((state) => {
     return state.cards.items;
   });
+
   const channel = channels.filter((channel) => {
     return channel.id === props.channelId;
   });
@@ -37,6 +38,16 @@ function ChannelInfo(props) {
     return state.header;
   });
 
+  const ratingsLoading = useSelector(state => {
+    return state.ratings.loading
+  });
+  const reviewsLoading = useSelector(state => {
+    return state.reviews.loading
+  })
+
+  if(reviewsLoading || ratingsLoading) {
+    return <div/>
+  }
   if (auth.user) {
     return <UserChannel channel={channel} rating={rating} reviews={reviews}/>;
   }
@@ -45,5 +56,6 @@ function ChannelInfo(props) {
   }
   return <GuestChannel channel={channel} rating={rating} reviews={reviews}/>;
 }
+
 
 export default ChannelInfo;

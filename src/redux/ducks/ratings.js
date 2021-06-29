@@ -5,11 +5,17 @@ const initialState = {
 
 const Ratings = (state = initialState, action) => {
   switch (action.type) {
+    case 'ratings/load/start':
+      return {
+        ...state,
+        loading: true,
+      }
 
     case 'ratings/load/success':
       return {
         ...state,
         items: action.payload,
+        loading: false,
       };
 
     default:

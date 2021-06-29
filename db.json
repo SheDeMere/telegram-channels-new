@@ -122,7 +122,7 @@
     },
     {
       "id": 9,
-      "categoryId": 3,
+      "category": 3,
       "name": "Нетология",
       "channelLogin": "@netologia",
       "imgUrl": "https://c.tcdn.co/47f/f73/47ff73f4-84d4-11e6-a52f-040157cdaf01/channel128.png",

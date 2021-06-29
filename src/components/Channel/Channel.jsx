@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import {useParams } from 'react-router-dom'
 import ChannelInfo from './ChannelInfo/ChannelInfo'
 
 function Channel (props) {
@@ -9,9 +9,7 @@ function Channel (props) {
    return <div/>
   }
   else return (
-    <div>
     <ChannelInfo channelId={channelId}/>
-    </div>
   )
 }
 

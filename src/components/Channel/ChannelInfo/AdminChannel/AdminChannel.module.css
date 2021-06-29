@@ -130,7 +130,7 @@
     padding-top: 5px;
     display: flex;
     justify-content: space-between;
-    width: 250px;
+    width: 130px;
 }
 .channel_delete,
 .channel_edit {
@@ -173,8 +173,11 @@
     font-size: 16px;
     color: lightcoral;
     margin-left: 5px;
-    cursor: pointer;
     background-color: transparent;
     border: none;
     outline: none;
+}
+.review_delete_btn:hover {
+    color: red;
+    cursor: pointer;
 }

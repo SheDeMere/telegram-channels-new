@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { Rating } from '@material-ui/lab';
 import { useDispatch, useSelector } from 'react-redux';
-import { addReview } from '../../../../redux/ducks/cards';
+import { addReview } from '../../../../redux/ducks/reviews'
 
 function UserChannel(props) {
   const dispatch = useDispatch();

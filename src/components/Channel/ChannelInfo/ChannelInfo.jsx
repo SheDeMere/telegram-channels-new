@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import UserChannel from './UserChannel/UserChannel';
 import AdminChannel from './AdminChannel/AdminChannel';
 import GuestChannel from './GuestChannel/GuestChannel';
-import { loadRatings, loadReviews, selectedChannel } from '../../../redux/ducks/cards'
-import DeleteChannel from './AdminChannel/deleteChannels'
-import { Route } from 'react-router-dom'
+import {selectedChannel } from '../../../redux/ducks/cards'
+import { loadRatings } from '../../../redux/ducks/ratings'
+import { loadReviews } from '../../../redux/ducks/reviews'
 
 function ChannelInfo(props) {
   const dispatch = useDispatch();
@@ -26,11 +26,11 @@ function ChannelInfo(props) {
     return channel.id === props.channelId;
   });
   const rating = useSelector((state) => {
-    return state.cards.ratings;
+    return state.ratings.items;
   });
 
   const reviews = useSelector((state)=>{
-    return state.cards.reviews
+    return state.reviews.items
   });
 
   const auth = useSelector((state) => {

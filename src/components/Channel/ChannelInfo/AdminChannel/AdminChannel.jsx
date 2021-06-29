@@ -4,9 +4,10 @@ import { Link, useParams } from 'react-router-dom'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 import { Rating } from '@material-ui/lab'
-import { addReview, deleteReview, openDeleteChannelModal } from '../../../../redux/ducks/cards'
+import {openDeleteChannelModal } from '../../../../redux/ducks/cards'
 import { useDispatch, useSelector } from 'react-redux'
 import DeleteChannel from './deleteChannels'
+import { addReview, deleteReview } from '../../../../redux/ducks/reviews'
 
 function AdminChannel (props) {
   const dispatch = useDispatch();

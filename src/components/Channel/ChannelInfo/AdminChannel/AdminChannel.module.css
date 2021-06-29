@@ -178,3 +178,6 @@
     border: none;
     outline: none;
 }
+.review_delete_btn:hover {
+    color: red;
+}

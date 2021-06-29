@@ -1,0 +1,84 @@
+.modal {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #ffffff;
+    color: black;
+    padding: 2rem;
+    transition: opacity 0.25s;
+    z-index: 3;
+    border-radius: 5px;
+}
+.modal.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.25s;
+}
+.modal_bg.show {
+    visibility: hidden;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: gray;
+}
+.modal_bg.show {
+    visibility: visible;
+    opacity: 50%;
+    transition: opacity 0.25s;
+}
+.close {
+    height: 0px;
+    display: none;
+}
+.modal_btn {
+    font-size: 20px;
+    color: gray;
+    padding: 10px 5px;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    outline: none;
+    background: transparent;
+    border: none;
+}
+.modal_btn {
+    cursor: pointer;
+}
+.delete_window {
+    width: 300px;
+    height: 150px;
+    border-radius: 5px;
+}
+.delete_title {
+    font-family: 'Roboto', sans-serif;
+    color: #3220d4;
+    text-transform: uppercase;
+    font-weight: 400;
+    opacity: 0.5;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.delete_btn {
+    color: #3f51b5;
+    font-size: 18px;
+    border: 1px solid rgba(63, 81, 181, 0.5);
+    outline: none;
+    background-color: transparent;
+    padding: 15px 30px;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+    transition: all ease 0.3s;
+    border-radius: 5px;
+    font-family: "Roboto", sans-serif;
+}
+.delete_btn:hover {
+    border: 1px solid #3f51b5;
+}

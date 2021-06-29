@@ -4,6 +4,7 @@ const initialState = {
   ratings: [],
   reviews: [],
   selectedChannel: [],
+  showDeleteChannelModal:false,
 };
 
 const Cards = (state = initialState, action) => {
@@ -54,6 +55,27 @@ const Cards = (state = initialState, action) => {
           return item;
         }),
       };
+    case 'open/deleteChannelModal':
+      return {
+        ...state,
+        showDeleteChannelModal: action.payload
+      }
+    case 'admin/channel/delete':
+      return {
+        ...state,
+        items: state.items.filter((channel)=>{
+          if(channel.id === action.payload) {
+            return false
+          }
+          return channel
+    }),
+        showDeleteChannelModal: false
+  };
+    case 'close/deleteChannelModal':
+      return {
+        ...state,
+        showDeleteChannelModal: false
+      }
 
     default:
       return state;
@@ -174,6 +196,32 @@ export function deleteReview(id) {
       .then((json) => {
         dispatch({
           type: 'admin/review/delete',
+          payload: id,
+        });
+      });
+  };
+}
+
+export function openDeleteChannelModal(show) {
+  return {
+      type: 'open/deleteChannelModal',
+      payload: !show
+    };
+}
+export function closeDeleteChannelModal() {
+  return {
+    type: 'close/deleteChannelModal',
+  };
+}
+export function deleteChannel(id) {
+  return (dispatch) => {
+    fetch(`http://localhost:3001/channels/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => response.json())
+      .then((json) => {
+        dispatch({
+          type: 'admin/channel/delete',
           payload: id,
         });
       });

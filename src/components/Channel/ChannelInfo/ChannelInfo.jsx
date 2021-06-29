@@ -4,6 +4,8 @@ import UserChannel from './UserChannel/UserChannel';
 import AdminChannel from './AdminChannel/AdminChannel';
 import GuestChannel from './GuestChannel/GuestChannel';
 import { loadRatings, loadReviews, selectedChannel } from '../../../redux/ducks/cards'
+import DeleteChannel from './AdminChannel/deleteChannels'
+import { Route } from 'react-router-dom'
 
 function ChannelInfo(props) {
   const dispatch = useDispatch();

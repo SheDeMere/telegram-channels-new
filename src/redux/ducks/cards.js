@@ -18,6 +18,11 @@ const Cards = (state = initialState, action) => {
         loading: false,
         items: action.payload,
       };
+    case 'channelsByCategory/load/success':
+      return {
+        ...state,
+        items:action.payload
+      }
     case 'edit/items':
       return {
         ...state,
@@ -96,6 +101,24 @@ export function loadChannels() {
       .then((json) => {
         return dispatch({
           type: 'channels/load/success',
+          payload: json,
+        });
+      });
+  };
+}
+
+export function openChannelsByCategory(categoryId) {
+  return (dispatch) => {
+    dispatch({
+      type: 'channelsByCategory/load/start',
+    });
+    fetch(`http://localhost:3001/channels?categoryId=${categoryId}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        return dispatch({
+          type: 'channelsByCategory/load/success',
           payload: json,
         });
       });

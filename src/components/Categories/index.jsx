@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadCategories } from '../../redux/ducks/categories'
 import styles from "./Categories.module.css"
-import { openChannelsByCategory } from '../../redux/ducks/cards'
+import { allChannels, openChannelsByCategory } from '../../redux/ducks/cards'
 import { Link } from 'react-router-dom'
 
 function Categories (props) {
@@ -20,9 +20,18 @@ function Categories (props) {
     dispatch(openChannelsByCategory(categoryId))
   }
 
+  const handleClick = () => {
+    dispatch(allChannels())
+  }
+
   return (
     <div>
       <div className={styles.categories_wrap}>
+        <Link to='/add/channel'>
+          <button
+            onClick={handleClick}
+            className={styles.category}>Все</button>
+        </Link>
         {categories.map((category)=>{
           return (
             <Link to={`/${category.url}`}>

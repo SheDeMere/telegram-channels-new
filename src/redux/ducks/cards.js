@@ -55,6 +55,13 @@ const Cards = (state = initialState, action) => {
         showDeleteChannelModal: false
       }
 
+
+    case 'all/channels/success':
+      return {
+        ...state,
+        items: action.payload
+      }
+
     default:
       return state;
   }
@@ -88,6 +95,19 @@ export const editChannel =
       },
     });
   };
+
+export const allChannels = () => {
+  return dispatch => {
+    fetch('http://localhost:3001/channels')
+      .then(res => res.json())
+      .then(json => {
+        dispatch({
+          type: 'all/channels/success',
+          payload: json
+        })
+      })
+  }
+}
 
 export function loadChannels() {
   return (dispatch) => {

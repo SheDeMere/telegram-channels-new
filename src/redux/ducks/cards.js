@@ -194,13 +194,13 @@ export const addChannel = (id, category ,name, login, link, followers, desk) => 
         'Content-type': 'application/json; charset=utf-8',
       }
     })
-      .then(res => res.json())
-      .then(json => {
-        dispatch({
-          type: 'add/channel/success',
-          payload: json
-        })
-      })
+      // .then(res => res.json())
+      // .then(json => {
+      //   dispatch({
+      //     type: 'add/channel/success',
+      //     payload: json
+      //   })
+      // })
 
   }
 }

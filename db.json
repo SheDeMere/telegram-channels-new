@@ -234,13 +234,22 @@
       "desk": "Все о еде вне дома: новые места, проверенные адреса, советы бывалых и личные впечатления о ресторанах России и мира без купюр."
     },
     {
-      "id": "[object Object]1",
+      "id": 21,
       "category": "1",
       "name": "testing",
       "channelLogin": "@test",
       "imgUrl": "https://citydog.by/content/_posts/442X361/5e2c4f627a5bc.jpeg",
       "followers": "212",
       "desk": "test"
+    },
+    {
+      "id": "[object Object]1",
+      "category": "1",
+      "name": "Testin two",
+      "channelLogin": "@tests",
+      "imgUrl": "https://images4.alphacoders.com/921/thumb-1920-921846.jpg",
+      "followers": "222",
+      "desk": "gomer simphson\n"
     }
   ],
   "ratings": [

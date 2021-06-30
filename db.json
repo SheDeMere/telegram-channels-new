@@ -28,23 +28,28 @@
   "categories": [
     {
       "id": 1,
-      "name": "Информативные"
+      "name": "Информативные",
+      "url": "informative"
     },
     {
       "id": 2,
-      "name": "Развлекательные"
+      "name": "Развлекательные",
+      "url": "entertaining"
     },
     {
       "id": 3,
-      "name": "IT"
+      "name": "IT",
+      "url": "it"
     },
     {
       "id": 4,
-      "name": "Спортивные"
+      "name": "Спортивные",
+      "url": "sport"
     },
     {
       "id": 5,
-      "name": "Кулинарные"
+      "name": "Кулинарные",
+      "url": "culinary"
     }
   ],
   "channels": [

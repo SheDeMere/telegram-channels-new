@@ -6,6 +6,7 @@ import Channel from './Channel/Channel'
 import Categories from './Categories'
 
 function App() {
+
   return (
     <div className="container">
           <Header/>

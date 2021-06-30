@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadCategories } from '../../redux/ducks/categories'
+import { loadCategories, openModal } from '../../redux/ducks/categories'
 import { allChannels, openChannelsByCategory } from '../../redux/ducks/cards'
 import styles from './Categories.module.css'
 import { Link } from 'react-router-dom'
+import AddChannels from './Modal/AddChannels'
 
-function UserCategories (props) {
+function AdminCategories (props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,15 +24,23 @@ function UserCategories (props) {
   const handleClick = () => {
     dispatch(allChannels())
   }
+
+  const handleOpenModal = () => {
+    dispatch(openModal())
+  }
   return (
     <div>
+      <AddChannels />
       <div className={styles.categories_wrap}>
-        <Link to='/add/channel'>
+        <Link to='/all'>
           <button
             onClick={handleClick}
-            className={styles.category}>Все</button>
+            className={styles.category}
+          >
+            Все
+          </button>
         </Link>
-        { categories && categories.map((category)=>{
+        {categories && categories.map((category)=>{
           return (
             <Link to={`/${category.url}`}>
               <button
@@ -41,9 +50,14 @@ function UserCategories (props) {
             </Link>
           )
         })}
+        <Link to='/add'>
+          <button
+            onClick={handleOpenModal}
+            className={styles.category}>Добавить</button>
+        </Link>
       </div>
     </div>
   )
 }
 
-export default UserCategories
+export default AdminCategories

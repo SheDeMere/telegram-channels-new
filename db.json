@@ -232,6 +232,15 @@
       "imgUrl": "https://c.tcdn.co/747/ec9/747ec964-70f7-11e8-87e2-866420764000/channel128.png",
       "followers": 33762,
       "desk": "Все о еде вне дома: новые места, проверенные адреса, советы бывалых и личные впечатления о ресторанах России и мира без купюр."
+    },
+    {
+      "id": "[object Object]1",
+      "category": "1",
+      "name": "testing",
+      "channelLogin": "@test",
+      "imgUrl": "https://citydog.by/content/_posts/442X361/5e2c4f627a5bc.jpeg",
+      "followers": "212",
+      "desk": "test"
     }
   ],
   "ratings": [

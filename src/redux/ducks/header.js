@@ -1,10 +1,10 @@
 const initialState = {
-  modalWindow: false,
-  admin: false,
-  user: false,
-  token:  null,
-  error: false,
-  name: ""
+  modalWindow: JSON.parse(localStorage.getItem("auth")).modalWindow || false,
+  admin: JSON.parse(localStorage.getItem("auth")).admin || false,
+  user: JSON.parse(localStorage.getItem("auth")).user || false,
+  token:  JSON.parse(localStorage.getItem("auth")).token || null,
+  error: JSON.parse(localStorage.getItem("auth")).error || false,
+  name: JSON.parse(localStorage.getItem("auth")).name || ''
 };
 
 const Header = (state = initialState, action) => {
@@ -51,7 +51,12 @@ const Header = (state = initialState, action) => {
     case 'logout/start':
       return {
         ...state,
-        token: null
+        modalWindow: false,
+        admin: false,
+        user: false,
+        token: null,
+        error: false,
+        name: ''
       }
 
     default:
@@ -73,14 +78,14 @@ export const openWindow = () => {
 
 
 export const logoutStart = () => {
-  localStorage.removeItem('token')
+  localStorage.removeItem('auth');
   return {
     type: 'logout/start'
   }
 }
 
 export const setAuth = (login, password) => (dispatch) => {
-    fetch(`http://localhost:3001/authorization/login`, {
+  fetch(`http://localhost:3001/authorization/login`, {
       method: 'POST',
       headers: { 'Content-Type':'application/json' },
       body: JSON.stringify({
@@ -90,7 +95,6 @@ export const setAuth = (login, password) => (dispatch) => {
     })
       .then(res => res.json())
       .then(json => {
-        localStorage.setItem('token', json.token)
         dispatch({
           type: 'access/user',
           payload: json,

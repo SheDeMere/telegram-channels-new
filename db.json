@@ -235,21 +235,12 @@
     },
     {
       "id": 21,
-      "category": "1",
-      "name": "testing",
-      "channelLogin": "@test",
-      "imgUrl": "https://citydog.by/content/_posts/442X361/5e2c4f627a5bc.jpeg",
-      "followers": "212",
-      "desk": "test"
-    },
-    {
-      "id": "[object Object]1",
-      "category": "1",
-      "name": "Testin two",
-      "channelLogin": "@tests",
-      "imgUrl": "https://images4.alphacoders.com/921/thumb-1920-921846.jpg",
-      "followers": "222",
-      "desk": "gomer simphson\n"
+      "categoryId": "1",
+      "name": "Testing function",
+      "channelLogin": "@ReactJS",
+      "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
+      "followers": "1m",
+      "desk": "JavaScript"
     }
   ],
   "ratings": [
@@ -301,7 +292,7 @@
     {
       "id": 10,
       "channelId": 10,
-      "star": 2
+      "star": "3"
     },
     {
       "id": 11,
@@ -352,6 +343,11 @@
       "id": 20,
       "channelId": 20,
       "star": 1
+    },
+    {
+      "id": 21,
+      "channelId": 21,
+      "star": "5"
     }
   ],
   "reviews": [

@@ -2,21 +2,22 @@ import React, { useEffect, useState } from 'react'
 import styles from '../../Channel/ChannelInfo/AdminChannel/editChannels/Edit.module.css'
 import { Button, TextField } from '@material-ui/core'
 import { useDispatch, useSelector } from 'react-redux'
-import { addChannel, editChannel, selectedChannel } from '../../../redux/ducks/cards'
+import { addChannel, addReviews, editChannel, selectedChannel } from '../../../redux/ducks/cards'
 
 function AddChannelInput (props) {
   const dispatch = useDispatch();
 
   const dataChannel = useSelector(state => state.cards.items)
-  const itemsId = dataChannel && dataChannel.filter(items => {
+  const itemsId = dataChannel && dataChannel.map(items => {
     return items.id
   })
-  const id = itemsId[itemsId.length -1] + 1
+  const id = itemsId[itemsId.length - 1] + 1
 
-  const data = useSelector(state => state.cards.selectedChannel)
 
   const handleClick = () => {
+    window.location.reload()
     setInfo(true)
+    dispatch(addReviews(id, reviews))
     dispatch(addChannel(id, category ,name, login, link, followers, desk));
   };
 
@@ -34,6 +35,7 @@ function AddChannelInput (props) {
 
   const [category, setCategory] = useState();
 
+  const [reviews, setReviews] = useState()
 
   return (
     <div>
@@ -86,6 +88,16 @@ function AddChannelInput (props) {
             variant="outlined"
             value={followers}
             onChange={(e) => setFollowers(e.target.value)}
+          />
+        </div>
+        <div className={styles.input}>
+          <TextField
+            className={styles.inputForm}
+            id="outlined-basic"
+            label="Оценка"
+            variant="outlined"
+            value={reviews}
+            onChange={(e) => setReviews(e.target.value)}
           />
         </div>
         <div className={styles.input}>

@@ -3,7 +3,7 @@ import styles from './Edit.module.css'
 import { Button, TextField } from '@material-ui/core'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { editChannel, selectedChannel } from '../../../../../redux/ducks/cards'
+import { editChannel, editReviews, selectedChannel, selectedReviews } from '../../../../../redux/ducks/cards'
 
 function Inputs (props) {
   const id = parseInt(useParams().id);
@@ -11,10 +11,14 @@ function Inputs (props) {
   const dispatch = useDispatch();
 
   const data = useSelector(state => state.cards.selectedChannel)
+  const dataReviews =  useSelector(state => state.cards.selectedChannelReviews);
+
 
   const handleClick = () => {
     setInfo(true)
+    window.location.reload()
     dispatch(editChannel(category ,name, login, link, followers, desk, id));
+    dispatch(editReviews(id, reviews))
   };
 
   const [info, setInfo] = useState(false)
@@ -31,8 +35,11 @@ function Inputs (props) {
 
   const [category, setCategory] = useState(data.categoryId);
 
+  const [reviews, setReviews] = useState(dataReviews.star);
+
   useEffect(() => {
     dispatch(selectedChannel(id))
+    dispatch(selectedReviews(id))
   }, [dispatch])
 
   return (
@@ -86,6 +93,16 @@ function Inputs (props) {
             variant="outlined"
             value={followers}
             onChange={(e) => setFollowers(e.target.value)}
+          />
+        </div>
+        <div className={styles.input}>
+          <TextField
+            className={styles.inputForm}
+            id="outlined-basic"
+            label="Оценка"
+            variant="outlined"
+            value={reviews}
+            onChange={(e) => setReviews(e.target.value)}
           />
         </div>
         <div className={styles.input}>

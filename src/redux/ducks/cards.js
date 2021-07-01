@@ -55,6 +55,19 @@ const Cards = (state = initialState, action) => {
         showDeleteChannelModal: false
       }
 
+
+    case 'all/channels/success':
+      return {
+        ...state,
+        items: action.payload
+      }
+
+    case 'add/channel/success':
+      return {
+        ...state,
+        items: action.payload
+      }
+
     default:
       return state;
   }
@@ -88,6 +101,19 @@ export const editChannel =
       },
     });
   };
+
+export const allChannels = () => {
+  return dispatch => {
+    fetch('http://localhost:3001/channels')
+      .then(res => res.json())
+      .then(json => {
+        dispatch({
+          type: 'all/channels/success',
+          payload: json
+        })
+      })
+  }
+}
 
 export function loadChannels() {
   return (dispatch) => {
@@ -150,7 +176,34 @@ export function deleteChannel(id) {
       });
   };
 }
+export const addChannel = (id, category ,name, login, link, followers, desk) => {
+  return dispatch => {
+    dispatch({ type: 'add/channel/start'})
+    fetch('http://localhost:3001/channels', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: id,
+        category: category,
+        name: name,
+        channelLogin: login,
+        imgUrl: link,
+        followers: followers,
+        desk: desk
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=utf-8',
+      }
+    })
+      // .then(res => res.json())
+      // .then(json => {
+      //   dispatch({
+      //     type: 'add/channel/success',
+      //     payload: json
+      //   })
+      // })
 
+  }
+}
 //тут будут санки
 
 export default Cards;

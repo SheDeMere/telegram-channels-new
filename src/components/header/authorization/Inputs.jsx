@@ -1,4 +1,3 @@
-
 import { Button, TextField } from '@material-ui/core';
 import styles from './Authorization.module.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,11 +13,10 @@ function Inputs(props) {
 
   const error = useSelector((state) => state.header.error);
 
-
-
   const sendData = () => {
     dispatch(setAuth(login, pass))
   }
+
   return (
     <div className={styles['inputs_group']}>
       <div>

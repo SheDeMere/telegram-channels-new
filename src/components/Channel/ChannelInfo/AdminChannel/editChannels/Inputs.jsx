@@ -3,11 +3,8 @@ import styles from './Edit.module.css';
 import { Button, TextField } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  editChannel,
-  editReviews,
-} from '../../../../../redux/ducks/cards';
-import { useHotkeys } from 'react-hotkeys-hook'
+import { editChannel, editReviews } from '../../../../../redux/ducks/cards';
+import { useHotkeys } from 'react-hotkeys-hook';
 
 function Inputs(props) {
   const id = parseInt(useParams().id);

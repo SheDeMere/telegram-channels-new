@@ -36,7 +36,6 @@ function ChannelInfo(props) {
     return state.header;
   });
 
-
   if (auth.user) {
     return <UserChannel channel={channel} rating={rating} reviews={reviews} />;
   }

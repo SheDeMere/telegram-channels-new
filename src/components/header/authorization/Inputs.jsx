@@ -3,7 +3,7 @@ import styles from './Authorization.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { setAuth } from '../../../redux/ducks/header';
-import { useHotkeys } from 'react-hotkeys-hook'
+import { useHotkeys } from 'react-hotkeys-hook';
 
 function Inputs() {
   const dispatch = useDispatch();

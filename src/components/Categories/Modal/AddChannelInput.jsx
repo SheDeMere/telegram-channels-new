@@ -3,7 +3,7 @@ import styles from '../../Channel/ChannelInfo/AdminChannel/editChannels/Edit.mod
 import { Button, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { addChannel, addReviews } from '../../../redux/ducks/cards';
-import { useHotkeys } from 'react-hotkeys-hook'
+import { useHotkeys } from 'react-hotkeys-hook';
 
 function AddChannelInput() {
   const dispatch = useDispatch();

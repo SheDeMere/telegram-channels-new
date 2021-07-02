@@ -4,6 +4,7 @@ import { Button } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutStart, openWindow } from '../../redux/ducks/header';
 import { Link } from 'react-router-dom';
+import { useHotkeys } from 'react-hotkeys-hook'
 function Login() {
   const dispatch = useDispatch();
 
@@ -18,6 +19,14 @@ function Login() {
   const logout = () => {
     dispatch(logoutStart());
   };
+
+  useHotkeys(
+    'ctrl + l',
+    () => {
+      logout();
+    },
+
+  );
 
   return (
     <div className={styles.users}>

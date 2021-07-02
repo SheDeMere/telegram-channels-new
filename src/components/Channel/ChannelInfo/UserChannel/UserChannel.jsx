@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { Rating } from '@material-ui/lab';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReview } from '../../../../redux/ducks/reviews';
+import { useHotkeys } from 'react-hotkeys-hook'
 
 function UserChannel(props) {
   const dispatch = useDispatch();

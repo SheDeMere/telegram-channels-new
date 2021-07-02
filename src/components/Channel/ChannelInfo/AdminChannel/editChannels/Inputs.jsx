@@ -6,9 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   editChannel,
   editReviews,
-  selectedChannel,
-  selectedReviews,
 } from '../../../../../redux/ducks/cards';
+import { useHotkeys } from 'react-hotkeys-hook'
 
 function Inputs(props) {
   const id = parseInt(useParams().id);
@@ -42,6 +41,13 @@ function Inputs(props) {
     dispatch(editChannel(category, name, login, link, followers, desk, id));
     dispatch(editReviews(id, reviews));
   };
+  useHotkeys(
+    'enter',
+    () => {
+      handleClick();
+    },
+    { enableOnTags: ['INPUT'] },
+  );
 
   return (
     <div>

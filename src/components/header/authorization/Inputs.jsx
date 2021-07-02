@@ -1,10 +1,11 @@
 import { Button, TextField } from '@material-ui/core';
 import styles from './Authorization.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react'
-import { setAuth } from '../../../redux/ducks/header'
+import { useState } from 'react';
+import { setAuth } from '../../../redux/ducks/header';
+import { useHotkeys } from 'react-hotkeys-hook'
 
-function Inputs(props) {
+function Inputs() {
   const dispatch = useDispatch();
 
   const [login, setLogin] = useState('');
@@ -14,8 +15,16 @@ function Inputs(props) {
   const error = useSelector((state) => state.header.error);
 
   const sendData = () => {
-    dispatch(setAuth(login, pass))
-  }
+    dispatch(setAuth(login, pass));
+  };
+
+  useHotkeys(
+    'enter',
+    () => {
+      sendData(login, pass);
+    },
+    { enableOnTags: ['INPUT'] },
+  );
 
   return (
     <div className={styles['inputs_group']}>
@@ -26,7 +35,7 @@ function Inputs(props) {
           variant="outlined"
           className={styles.input}
           value={login}
-          onChange={e => setLogin(e.target.value)}
+          onChange={(e) => setLogin(e.target.value)}
           style={{ marginBottom: 30 }}
         />
         <TextField
@@ -35,10 +44,14 @@ function Inputs(props) {
           variant="outlined"
           type="password"
           value={pass}
-          onChange={e => setPass(e.target.value)}
+          onChange={(e) => setPass(e.target.value)}
           className={styles.input}
         />
-        {error ? <p className={styles.error}>Неправильный логин или пароль</p> : ''}
+        {error ? (
+          <p className={styles.error}>Неправильный логин или пароль</p>
+        ) : (
+          ''
+        )}
         <Button
           variant="outlined"
           style={{
@@ -46,7 +59,7 @@ function Inputs(props) {
             color: '#2096D4',
             background: '00000',
             fontWeight: 300,
-            marginTop: 40
+            marginTop: 40,
           }}
           onClick={sendData}
         >

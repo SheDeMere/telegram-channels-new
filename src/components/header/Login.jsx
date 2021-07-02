@@ -1,33 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import styles from './Header.module.css';
 import { Button } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux'
-import { logoutStart, openWindow } from '../../redux/ducks/header'
-import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutStart, openWindow } from '../../redux/ducks/header';
+import { Link } from 'react-router-dom';
 function Login() {
   const dispatch = useDispatch();
 
+  const userName = useSelector((state) => state.header.name);
+
+  const login = useSelector((state) => state.header.token);
+
   const handleClick = () => {
-    dispatch(openWindow())
-  }
-
-  const userName = useSelector(state => state.header.name);
-
-  const login = useSelector(state => state.header.token);
+    dispatch(openWindow());
+  };
 
   const logout = () => {
-    window.location.reload()
-    dispatch(logoutStart())
-  }
+    dispatch(logoutStart());
+  };
 
   return (
     <div className={styles.users}>
-      {userName === "" ? <p className={styles.userName}>Вы вошли как гость</p>
-        :
+      {userName === '' ? (
+        <p className={styles.userName}>Вы вошли как гость</p>
+      ) : (
         <p className={styles.userName}>Вы вошли как {userName}</p>
-      }
-      {login === null ?
-        <Link to='/login'>
+      )}
+      {login === null ? (
+        <Link to="/login">
           <Button
             onClick={handleClick}
             variant="outlined"
@@ -43,7 +43,7 @@ function Login() {
             ВOЙТИ
           </Button>
         </Link>
-        :
+      ) : (
         <Button
           onClick={logout}
           variant="outlined"
@@ -58,8 +58,7 @@ function Login() {
         >
           ВЫЙТИ
         </Button>
-
-      }
+      )}
     </div>
   );
 }

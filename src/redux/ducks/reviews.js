@@ -9,7 +9,7 @@ const Reviews = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-      }
+      };
 
     case 'reviews/load/success':
       return {
@@ -94,6 +94,5 @@ export function deleteReview(id) {
       });
   };
 }
-
 
 export default Reviews;

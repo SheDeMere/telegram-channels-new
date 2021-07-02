@@ -1,27 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import styles from './Edit.module.css'
-import { Button, TextField } from '@material-ui/core'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { editChannel, editReviews, selectedChannel, selectedReviews } from '../../../../../redux/ducks/cards'
+import React, { useEffect, useState } from 'react';
+import styles from './Edit.module.css';
+import { Button, TextField } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  editChannel,
+  editReviews,
+  selectedChannel,
+  selectedReviews,
+} from '../../../../../redux/ducks/cards';
 
-function Inputs (props) {
+function Inputs(props) {
   const id = parseInt(useParams().id);
 
   const dispatch = useDispatch();
 
-  const data = useSelector(state => state.cards.selectedChannel)
-  const dataReviews =  useSelector(state => state.cards.selectedChannelReviews);
+  const data = useSelector((state) => state.cards.selectedChannel);
+  const dataReviews = useSelector(
+    (state) => state.cards.selectedChannelReviews,
+  );
 
-
-  const handleClick = () => {
-    setInfo(true)
-    window.location.reload()
-    dispatch(editChannel(category ,name, login, link, followers, desk, id));
-    dispatch(editReviews(id, reviews))
-  };
-
-  const [info, setInfo] = useState(false)
+  const [info, setInfo] = useState(false);
 
   const [name, setName] = useState(data.name);
 
@@ -37,10 +36,12 @@ function Inputs (props) {
 
   const [reviews, setReviews] = useState(dataReviews.star);
 
-  useEffect(() => {
-    dispatch(selectedChannel(id))
-    dispatch(selectedReviews(id))
-  }, [dispatch])
+  const handleClick = () => {
+    setInfo(true);
+    window.location.reload();
+    dispatch(editChannel(category, name, login, link, followers, desk, id));
+    dispatch(editReviews(id, reviews));
+  };
 
   return (
     <div>
@@ -117,13 +118,19 @@ function Inputs (props) {
             onChange={(e) => setDesk(e.target.value)}
           />
         </div>
-        {info ? <p style={{color: 'green', opacity: '0.8', fontWeight: 300}}>Данные успешно сохранены!</p> : ''}
+        {info ? (
+          <p style={{ color: 'green', opacity: '0.8', fontWeight: 300 }}>
+            Данные успешно сохранены!
+          </p>
+        ) : (
+          ''
+        )}
         <Button variant="outlined" color="primary" onClick={handleClick}>
           Сохранить
         </Button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Inputs
+export default Inputs;

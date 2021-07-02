@@ -3,11 +3,9 @@ import GuestChannels from './GuestChannels/GuestChannels';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadChannels } from '../../redux/ducks/cards';
 import UserChannels from './UserChannels/UserChannels';
-import AdminChannels from './AdminChannels/AdminChannels'
-import EditName from '../Channel/ChannelInfo/AdminChannel/editChannels'
-import Channel from '../Channel/Channel'
+import AdminChannels from './AdminChannels/AdminChannels';
 
-function Channels(props) {
+function Channels() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,18 +16,16 @@ function Channels(props) {
     return state.header;
   });
   const channels = useSelector((state) => {
-    return state.cards.items
+    return state.cards.items;
   });
 
   if (auth.user) {
-    return <UserChannels channels={channels}/>;
+    return <UserChannels channels={channels} />;
   }
-  if(auth.admin) {
-    return <AdminChannels channels={channels}/>
+  if (auth.admin) {
+    return <AdminChannels channels={channels} />;
   }
   return <GuestChannels channels={channels} />;
-
 }
 
 export default Channels;
-

@@ -9,7 +9,7 @@ const Ratings = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-      }
+      };
 
     case 'ratings/load/success':
       return {
@@ -41,4 +41,4 @@ export function loadRatings(id) {
   };
 }
 
-export default Ratings
+export default Ratings;

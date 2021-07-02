@@ -1,10 +1,9 @@
 import { createLogger } from 'redux-logger/src';
 import { applyMiddleware, combineReducers, createStore } from 'redux';
-import { cards, categories, header, ratings, reviews } from './ducks'
+import { cards, categories, header, ratings, reviews } from './ducks';
 import thunk from 'redux-thunk';
 
-const logger = createLogger(
-  {
+const logger = createLogger({
   diff: true,
   collapsed: true,
 });
@@ -12,7 +11,7 @@ const logger = createLogger(
 const localUser = localStorage.getItem('auth');
 
 const preloadedState = {
-  auth: localUser ? JSON.parse(localUser) : undefined
+  auth: localUser ? JSON.parse(localUser) : undefined,
 };
 export const store = createStore(
   combineReducers({ header, categories, cards, reviews, ratings }),

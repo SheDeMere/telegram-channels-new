@@ -22,6 +22,7 @@ const Reviews = (state = initialState, action) => {
         ...state,
         items: [...state.items, action.payload],
       };
+
     case 'admin/review/delete':
       return {
         ...state,

@@ -15,9 +15,6 @@ function Header() {
         <Route path="/login">
           <Authorization />
         </Route>
-        <Route path="/edit/:id?">
-          <EditName />
-        </Route>
       </Switch>
     </div>
   );

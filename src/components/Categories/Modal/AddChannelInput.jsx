@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import styles from '../../Channel/ChannelInfo/AdminChannel/editChannels/Edit.module.css';
 import { Button, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
-import { addChannel, addReviews } from '../../../redux/ducks/cards';
+import { addChannel } from '../../../redux/ducks/cards';
 import { useHotkeys } from 'react-hotkeys-hook';
+import { addRating } from '../../../redux/ducks/ratings'
 
 function AddChannelInput() {
   const dispatch = useDispatch();
@@ -26,18 +27,15 @@ function AddChannelInput() {
 
   const dataChannel = useSelector((state) => state.cards.items);
 
-  const itemsId =
-    dataChannel &&
-    dataChannel.map((items) => {
+  const itemsId = dataChannel.map((items) => {
       return items.id;
     });
 
-  const id = itemsId[itemsId.length - 1] + 1;
+  const id = itemsId && itemsId[itemsId.length - 1] + 1;
 
   const handleClick = () => {
-    window.location.reload();
     setInfo(true);
-    dispatch(addReviews(id, reviews));
+    dispatch(addRating(id, reviews));
     dispatch(addChannel(id, category, name, login, link, followers, desk));
   };
   useHotkeys(

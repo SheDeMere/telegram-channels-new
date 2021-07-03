@@ -43,7 +43,7 @@ function Login() {
               background: '00000',
               fontWeight: 300,
             }}
-            className={styles.login_button}
+            className={styles['login_button']}
           >
             ВOЙТИ
           </Button>
@@ -59,7 +59,7 @@ function Login() {
             background: '00000',
             fontWeight: 300,
           }}
-          className={styles.login_button}
+          className={styles['login_button']}
         >
           ВЫЙТИ
         </Button>

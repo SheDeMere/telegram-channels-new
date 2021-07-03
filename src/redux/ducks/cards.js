@@ -2,7 +2,6 @@ const initialState = {
   loading: false,
   items: [],
   selectedChannel: [],
-  selectedChannelReviews: [],
   showDeleteChannelModal: false,
 };
 
@@ -13,32 +12,26 @@ const Cards = (state = initialState, action) => {
         ...state,
         loading: true,
       };
+
     case 'channels/load/success':
       return {
         ...state,
         loading: false,
         items: action.payload,
       };
+
     case 'channelsByCategory/load/success':
       return {
         ...state,
         items: action.payload,
       };
-    case 'edit/items':
-      return {
-        ...state,
-        items: action.payload,
-      };
-    case 'select/channel':
-      return {
-        ...state,
-        selectedChannel: action.payload,
-      };
+
     case 'open/deleteChannelModal':
       return {
         ...state,
         showDeleteChannelModal: action.payload,
       };
+
     case 'admin/channel/delete':
       return {
         ...state,
@@ -50,28 +43,37 @@ const Cards = (state = initialState, action) => {
         }),
         showDeleteChannelModal: false,
       };
+
     case 'close/deleteChannelModal':
       return {
         ...state,
         showDeleteChannelModal: false,
       };
 
-    case 'all/channels/success':
+    case 'select/channel/success':
       return {
         ...state,
-        items: action.payload,
+        selectedChannel: action.payload
+      }
+
+
+    case 'edit/channel/success':
+      return {
+        ...state,
+        items:  [...state.items, action.payload]
       };
 
     case 'add/channel/success':
       return {
         ...state,
-        items: action.payload,
+        items: [...state.items, action.payload]
       };
 
-    case 'selected/reviews/success':
+
+    case 'all/channels/success':
       return {
         ...state,
-        selectedChannelReviews: action.payload,
+        items: action.payload,
       };
 
     default:
@@ -84,7 +86,7 @@ export const selectedChannel = (id) => (dispatch) => {
     .then((res) => res.json())
     .then((json) => {
       dispatch({
-        type: 'select/channel',
+        type: 'select/channel/success',
         payload: json,
       });
     });
@@ -105,7 +107,14 @@ export const editChannel =
       headers: {
         'Content-type': 'application/json; charset=utf-8',
       },
-    });
+    })
+      .then(res => res.json())
+      .then(json => {
+        dispatch({
+          type: 'edit/channel/success',
+          payload: json
+        })
+      })
   };
 
 export const allChannels = () => {
@@ -207,50 +216,19 @@ export const addChannel = (
       headers: {
         'Content-type': 'application/json; charset=utf-8',
       },
-    });
-  };
+    })
+      .then(res => res.json())
+      .then(json => {
+         dispatch({
+           type: 'add/channel/success',
+           payload: json
+         })
+      })
+  }
 };
 
-export const addReviews = (id, reviews) => {
-  return (dispatch) => {
-    fetch('http://localhost:3001/ratings', {
-      method: 'POST',
-      body: JSON.stringify({
-        id: id,
-        channelId: id,
-        star: reviews,
-      }),
-      headers: { 'Content-type': 'application/json; charset=utf-8' },
-    });
-  };
-};
 
-export const selectedReviews = (id) => {
-  return (dispatch) => {
-    fetch(`http://localhost:3001/ratings/${id}`)
-      .then((res) => res.json())
-      .then((json) => {
-        dispatch({
-          type: 'selected/reviews/success',
-          payload: json,
-        });
-      });
-  };
-};
 
-export const editReviews = (id, reviews) => {
-  return (dispatch) => {
-    fetch(`http://localhost:3001/ratings/${id}`, {
-      method: 'PATCH',
-      body: JSON.stringify({
-        id: id,
-        channelId: id,
-        star: reviews,
-      }),
-      headers: { 'Content-type': 'application/json; charset=utf-8' },
-    });
-  };
-};
 //тут будут санки
 
 export default Cards;

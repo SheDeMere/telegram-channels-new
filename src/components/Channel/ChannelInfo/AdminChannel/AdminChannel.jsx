@@ -37,6 +37,8 @@ function AdminChannel(props) {
     dispatch(deleteReview(id));
   };
 
+  const channel = props.channel && props.channel
+
   const handleOpenDeleteChannelModal = (showDeleteChannelModal) => {
     dispatch(openDeleteChannelModal(showDeleteChannelModal));
   };
@@ -60,7 +62,7 @@ function AdminChannel(props) {
             </button>
           </Link>
           <div className={styles.channel_card}>
-            {props.channel.map((channel) => {
+            {channel.map((channel) => {
               return (
                 <div>
                   <div className={styles.channel_settings}>

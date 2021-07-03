@@ -1,6 +1,7 @@
 const initialState = {
   loading: false,
   items: [],
+  selectedRating: []
 };
 
 const Ratings = (state = initialState, action) => {
@@ -9,7 +10,7 @@ const Ratings = (state = initialState, action) => {
       return {
         ...state,
         loading: true,
-      }
+      };
 
     case 'ratings/load/success':
       return {
@@ -18,6 +19,24 @@ const Ratings = (state = initialState, action) => {
         loading: false,
       };
 
+
+    case 'selected/rating/success':
+      return {
+        ...state,
+        selectedRating: action.payload
+      }
+
+    case 'edit/rating/success':
+      return {
+        ...state,
+        items: [...state.items, action.payload]
+      }
+
+    case 'add/rating/success':
+      return {
+        ...state,
+        items: [...state.items, action.payload]
+      }
     default:
       return state;
   }
@@ -41,4 +60,59 @@ export function loadRatings(id) {
   };
 }
 
-export default Ratings
+export const selectedRatings = (id) => {
+  return dispatch => {
+    fetch(`http://localhost:3001/ratings/${id}`)
+      .then((res) => res.json())
+      .then((json) => {
+        dispatch({
+          type: 'selected/rating/success',
+          payload: json
+        });
+      });
+  };
+};
+
+export const editRating = (id, rating) => {
+  console.log(id)
+  return (dispatch) => {
+    fetch(`http://localhost:3001/ratings/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        id: id,
+        channelId: id,
+        star: rating,
+      }),
+      headers: { 'Content-type': 'application/json; charset=utf-8' },
+    })
+      .then(res => res.json())
+      .then(json => {
+        dispatch({
+          type: 'edit/rating/success',
+          payload: json
+        })
+      })
+  };
+};
+
+export const addRating = (id, rating) => {
+  return (dispatch) => {
+    fetch('http://localhost:3001/ratings', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: id,
+        channelId: id,
+        star: rating,
+      }),
+      headers: { 'Content-type': 'application/json; charset=utf-8' },
+    })
+      .then(res => res.json())
+      .then(json => {
+        dispatch({
+          type: 'add/rating/success',
+          payload: json
+        })
+      })
+  };
+};
+export default Ratings;

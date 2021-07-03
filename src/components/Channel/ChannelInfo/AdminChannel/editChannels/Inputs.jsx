@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import styles from './Edit.module.css'
-import { Button, TextField } from '@material-ui/core'
-import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { editChannel, selectedChannel } from '../../../../../redux/ducks/cards'
+import React, { useEffect, useState } from 'react';
+import styles from './Edit.module.css';
+import { Button, TextField } from '@material-ui/core';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHotkeys } from 'react-hotkeys-hook';
+import { editChannel } from '../../../../../redux/ducks/cards'
+import { editRating } from '../../../../../redux/ducks/ratings'
 
-function Inputs (props) {
+function Inputs() {
   const id = parseInt(useParams().id);
 
   const dispatch = useDispatch();
 
-  const data = useSelector(state => state.cards.selectedChannel)
+  const data = useSelector((state) => state.cards.selectedChannel);
 
-  const handleClick = () => {
-    setInfo(true)
-    dispatch(editChannel(category ,name, login, link, followers, desk, id));
-  };
+  const dataRatings = useSelector((state) => state.ratings.selectedRating);
 
-  const [info, setInfo] = useState(false)
+  const [info, setInfo] = useState(false);
 
   const [name, setName] = useState(data.name);
 
@@ -31,9 +30,21 @@ function Inputs (props) {
 
   const [category, setCategory] = useState(data.categoryId);
 
-  useEffect(() => {
-    dispatch(selectedChannel(id))
-  }, [dispatch])
+  const [rating, setRating] = useState(dataRatings.star);
+
+  const handleClick = () => {
+    setInfo(true);
+    window.location.reload();
+    dispatch(editRating(id, rating));
+    dispatch(editChannel(category, name, login, link, followers, desk, id));
+  };
+  useHotkeys(
+    'enter',
+    () => {
+      handleClick();
+    },
+    { enableOnTags: ['INPUT'] },
+  );
 
   return (
     <div>
@@ -90,6 +101,16 @@ function Inputs (props) {
         </div>
         <div className={styles.input}>
           <TextField
+            className={styles.inputForm}
+            id="outlined-basic"
+            label="Оценка"
+            variant="outlined"
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
+          />
+        </div>
+        <div className={styles.input}>
+          <TextField
             id="outlined-multiline-static"
             label="Описание канала"
             multiline
@@ -100,13 +121,19 @@ function Inputs (props) {
             onChange={(e) => setDesk(e.target.value)}
           />
         </div>
-        {info ? <p style={{color: 'green', opacity: '0.8', fontWeight: 300}}>Данные успешно сохранены!</p> : ''}
+        {info ? (
+          <p style={{ color: 'green', opacity: '0.8', fontWeight: 300 }}>
+            Данные успешно сохранены!
+          </p>
+        ) : (
+          ''
+        )}
         <Button variant="outlined" color="primary" onClick={handleClick}>
           Сохранить
         </Button>
       </div>
     </div>
-  )
+  );
 }
 
-export default Inputs
+export default Inputs;

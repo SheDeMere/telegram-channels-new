@@ -11,8 +11,6 @@ import { useHotkeys } from 'react-hotkeys-hook';
 function UserChannel(props) {
   const dispatch = useDispatch();
 
-  const [value, setValue] = React.useState(props.rating);
-
   const [modal, setModal] = useState(true);
 
   const [text, setText] = useState('');
@@ -54,7 +52,7 @@ function UserChannel(props) {
                       >
                         Рейтинг канала:
                       </Typography>
-                      <Rating name="read-only" value={value} readOnly />
+                      <Rating name="read-only" value={props.rating} readOnly />
                     </Box>
                   </div>
                 </div>

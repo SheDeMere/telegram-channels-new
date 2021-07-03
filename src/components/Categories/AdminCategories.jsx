@@ -40,18 +40,18 @@ function AdminCategories() {
             </button>
           </Link>
           {categories &&
-            categories.map((category) => {
-              return (
-                <Link to={`/${category.url}`}>
-                  <button
-                    onClick={() => handleOpenChannelsByCategory(category.id)}
-                    className={styles.category}
-                  >
-                    {category.name}
-                  </button>
-                </Link>
-              );
-            })}
+          categories.map((category) => {
+            return (
+              <Link to={`/${category.url}`}>
+                <button
+                  onClick={() => handleOpenChannelsByCategory(category.id)}
+                  className={styles.category}
+                >
+                  {category.name}
+                </button>
+              </Link>
+            );
+          })}
         </div>
         <div className={styles.add}>
           <Link to="/add">

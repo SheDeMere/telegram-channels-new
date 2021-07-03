@@ -4,10 +4,9 @@ import { Link } from 'react-router-dom';
 import { Rating } from '@material-ui/lab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { useSelector } from 'react-redux'
 
 function GuestChannel(props) {
-  const [value, setValue] = React.useState(props.rating);
-
   const [modal, setModal] = useState(true);
 
   return (
@@ -39,7 +38,7 @@ function GuestChannel(props) {
                       >
                         Рейтинг канала:
                       </Typography>
-                      <Rating name="read-only" value={value} readOnly />
+                      <Rating name="read-only" value={props.rating} readOnly />
                     </Box>
                   </div>
                 </div>

@@ -1,5 +1,7 @@
 const initialState = {
   loading: false,
+  addingReview:false,
+  deletingReview:false,
   items: [],
 };
 
@@ -17,15 +19,27 @@ const Reviews = (state = initialState, action) => {
         loading: false,
         items: action.payload,
       };
+    case 'review/adding/start':
+      return {
+        ...state,
+        addingReview: true
+      };
     case 'user/review/add':
       return {
         ...state,
+        addingReview: false,
         items: [...state.items, action.payload],
       };
 
+    case 'admin/review/deleting/start':
+      return {
+        ...state,
+        deletingReview: true
+      }
     case 'admin/review/delete':
       return {
         ...state,
+        deletingReview: false,
         items: state.items.filter((review) => {
           if (action.payload === review.id) {
             return false;
@@ -59,6 +73,9 @@ export function loadReviews(id) {
 
 export function addReview(channelId, text, userName) {
   return (dispatch) => {
+    dispatch({
+      type: 'review/adding/start'
+    });
     fetch(`http://localhost:3001/reviews?channelId=${channelId}`, {
       method: 'POST',
       body: JSON.stringify({
@@ -83,6 +100,9 @@ export function addReview(channelId, text, userName) {
 
 export function deleteReview(id) {
   return (dispatch) => {
+    dispatch({
+      type: 'admin/review/deleting/start'
+    });
     fetch(`http://localhost:3001/reviews/${id}`, {
       method: 'DELETE',
     })

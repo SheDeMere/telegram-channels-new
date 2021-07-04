@@ -14,8 +14,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 function AdminChannel(props) {
   const dispatch = useDispatch();
 
-  const [value, setValue] = React.useState(props.rating);
-
   const id = parseInt(useParams().id);
 
   const [modal, setModal] = useState(true);
@@ -99,7 +97,7 @@ function AdminChannel(props) {
                           >
                             Рейтинг канала:
                           </Typography>
-                          <Rating name="read-only" value={value} readOnly />
+                          <Rating name="read-only" value={props.rating} readOnly />
                         </Box>
                       </div>
                     </div>

@@ -3,6 +3,7 @@ import styles from './AdminChannels.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ReactLoading from 'react-loading';
+import PropTypes from 'prop-types'
 
 function AdminChannels(props) {
   const preloader = useSelector((state) => state.cards.loading);
@@ -40,6 +41,10 @@ function AdminChannels(props) {
       })}
     </div>
   );
+}
+
+AdminChannels.propTypes = {
+  channels: PropTypes.array.isRequired
 }
 
 export default AdminChannels;

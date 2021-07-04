@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './GuestChannels.module.css';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 function GuestChannels(props) {
   const randomChannel =
@@ -35,4 +36,7 @@ function GuestChannels(props) {
   );
 }
 
+GuestChannels.propTypes = {
+  channels: PropTypes.array.isRequired
+}
 export default GuestChannels;

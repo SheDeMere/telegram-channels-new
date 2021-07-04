@@ -6,7 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import { Rating } from '@material-ui/lab';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReview } from '../../../../redux/ducks/reviews';
-import { useHotkeys } from 'react-hotkeys-hook';
+import PropTypes from 'prop-types'
+
 
 function UserChannel(props) {
   const dispatch = useDispatch();
@@ -99,4 +100,7 @@ function UserChannel(props) {
   );
 }
 
+UserChannel.propTypes = {
+  channel: PropTypes.array.isRequired
+}
 export default UserChannel;

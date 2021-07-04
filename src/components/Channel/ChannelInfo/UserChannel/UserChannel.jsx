@@ -19,6 +19,9 @@ function UserChannel(props) {
   const userName = useSelector((state) => {
     return state.header.name;
   });
+  const addingReview = useSelector((state) => {
+    return state.reviews.addingReview;
+  });
 
   const handleAddReview = (channelId, text, userName) => {
     dispatch(addReview(channelId, text, userName));
@@ -76,6 +79,7 @@ function UserChannel(props) {
                     />
                     <Link to={`/${channel.id}`}>
                       <button
+                        disabled={addingReview}
                         className={styles.review_btn}
                         onClick={() =>
                           handleAddReview(channel.id, text, userName)

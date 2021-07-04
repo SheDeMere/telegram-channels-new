@@ -3,13 +3,12 @@ import styles from './AdminChannels.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ReactLoading from 'react-loading';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 function AdminChannels(props) {
   const preloader = useSelector((state) => state.cards.loading);
 
   const channels = props.channels && props.channels;
-
   return preloader ? (
     <div className={styles.preloader}>
       <ReactLoading type="spin" color="#7373ff" height={80} width={80} />
@@ -44,7 +43,7 @@ function AdminChannels(props) {
 }
 
 AdminChannels.propTypes = {
-  channels: PropTypes.array.isRequired
-}
+  channels: PropTypes.array.isRequired,
+};
 
 export default AdminChannels;

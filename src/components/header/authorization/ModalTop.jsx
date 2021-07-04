@@ -11,6 +11,7 @@ function ModalTop() {
   const handleClick = () => {
     dispatch(closeWindow());
   };
+
   useHotkeys('esc', () => {
     handleClick();
   });

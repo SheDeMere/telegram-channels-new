@@ -6,8 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { Rating } from '@material-ui/lab';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReview } from '../../../../redux/ducks/reviews';
-import PropTypes from 'prop-types'
-
+import PropTypes from 'prop-types';
 
 function UserChannel(props) {
   const dispatch = useDispatch();
@@ -19,6 +18,7 @@ function UserChannel(props) {
   const userName = useSelector((state) => {
     return state.header.name;
   });
+
   const addingReview = useSelector((state) => {
     return state.reviews.addingReview;
   });
@@ -26,7 +26,6 @@ function UserChannel(props) {
   const handleAddReview = (channelId, text, userName) => {
     dispatch(addReview(channelId, text, userName));
   };
-
   return (
     <div>
       <div
@@ -105,6 +104,7 @@ function UserChannel(props) {
 }
 
 UserChannel.propTypes = {
-  channel: PropTypes.array.isRequired
-}
+  channel: PropTypes.array.isRequired,
+};
+
 export default UserChannel;

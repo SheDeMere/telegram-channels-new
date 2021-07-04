@@ -4,7 +4,7 @@ import Login from './Login';
 import styles from './Header.module.css';
 import Authorization from './authorization';
 import { Route, Switch } from 'react-router-dom';
-import EditName from '../Channel/ChannelInfo/AdminChannel/editChannels';
+
 
 function Header() {
   return (

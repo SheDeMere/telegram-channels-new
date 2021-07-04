@@ -4,8 +4,8 @@ import { Button, TextField } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { editChannel } from '../../../../../redux/ducks/cards'
-import { editRating } from '../../../../../redux/ducks/ratings'
+import { editChannel } from '../../../../../redux/ducks/cards';
+import { editRating } from '../../../../../redux/ducks/ratings';
 
 function Inputs() {
   const id = parseInt(useParams().id);

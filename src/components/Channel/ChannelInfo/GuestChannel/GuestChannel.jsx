@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 import { Rating } from '@material-ui/lab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import { PropTypes } from 'prop-types'
+import { PropTypes } from 'prop-types';
 
 function GuestChannel(props) {
   const [modal, setModal] = useState(true);
-
   return (
     <div>
       <div
@@ -68,6 +67,6 @@ function GuestChannel(props) {
 }
 
 GuestChannel.propTypes = {
-  channel: PropTypes.array.isRequired
-}
+  channel: PropTypes.array.isRequired,
+};
 export default GuestChannel;

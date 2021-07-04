@@ -35,7 +35,7 @@ const Categories = (state = initialState, action) => {
   }
 };
 
-//тут будут экшн креэйторы
+
 
 export const openModal = () => {
   return {
@@ -67,6 +67,6 @@ export function loadCategories() {
   };
 }
 
-//тут будут санки
+
 
 export default Categories;

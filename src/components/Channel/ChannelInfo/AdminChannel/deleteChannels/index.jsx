@@ -21,7 +21,6 @@ function DeleteChannel() {
   const handleCloseDeleteChannelModal = () => {
     dispatch(closeDeleteChannelModal());
   };
-
   return (
     <div>
       <div

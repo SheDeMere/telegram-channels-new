@@ -53,22 +53,20 @@ const Cards = (state = initialState, action) => {
     case 'select/channel/success':
       return {
         ...state,
-        selectedChannel: action.payload
-      }
-
+        selectedChannel: action.payload,
+      };
 
     case 'edit/channel/success':
       return {
         ...state,
-        items:  [...state.items, action.payload]
+        items: [...state.items, action.payload],
       };
 
     case 'add/channel/success':
       return {
         ...state,
-        items: [...state.items, action.payload]
+        items: [...state.items, action.payload],
       };
-
 
     case 'all/channels/success':
       return {
@@ -108,13 +106,13 @@ export const editChannel =
         'Content-type': 'application/json; charset=utf-8',
       },
     })
-      .then(res => res.json())
-      .then(json => {
+      .then((res) => res.json())
+      .then((json) => {
         dispatch({
           type: 'edit/channel/success',
-          payload: json
-        })
-      })
+          payload: json,
+        });
+      });
   };
 
 export const allChannels = () => {
@@ -217,18 +215,16 @@ export const addChannel = (
         'Content-type': 'application/json; charset=utf-8',
       },
     })
-      .then(res => res.json())
-      .then(json => {
-         dispatch({
-           type: 'add/channel/success',
-           payload: json
-         })
-      })
-  }
+      .then((res) => res.json())
+      .then((json) => {
+        dispatch({
+          type: 'add/channel/success',
+          payload: json,
+        });
+      });
+  };
 };
 
 
-
-//тут будут санки
 
 export default Cards;

@@ -10,7 +10,7 @@ import DeleteChannel from './deleteChannels';
 import { addReview, deleteReview } from '../../../../redux/ducks/reviews';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { PropTypes } from 'prop-types'
+import { PropTypes } from 'prop-types';
 
 function AdminChannel(props) {
   const dispatch = useDispatch();
@@ -42,8 +42,7 @@ function AdminChannel(props) {
     dispatch(deleteReview(id));
   };
 
-  const channel = props.channel && props.channel
-
+  const channel = props.channel && props.channel;
 
   const handleOpenDeleteChannelModal = (showDeleteChannelModal) => {
     dispatch(openDeleteChannelModal(showDeleteChannelModal));
@@ -105,7 +104,11 @@ function AdminChannel(props) {
                           >
                             Рейтинг канала:
                           </Typography>
-                          <Rating name="read-only" value={props.rating} readOnly />
+                          <Rating
+                            name="read-only"
+                            value={props.rating}
+                            readOnly
+                          />
                         </Box>
                       </div>
                     </div>
@@ -168,7 +171,7 @@ function AdminChannel(props) {
 }
 
 AdminChannel.propTypes = {
-  channel: PropTypes.array.isRequired
-}
+  channel: PropTypes.array.isRequired,
+};
 
 export default AdminChannel;

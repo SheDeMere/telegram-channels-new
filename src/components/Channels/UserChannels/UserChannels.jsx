@@ -3,7 +3,8 @@ import styles from './UserChannels.module.css';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ReactLoading from 'react-loading';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+
 function UserChannels(props) {
   const preloader = useSelector((state) => state.cards.loading);
   return preloader ? (
@@ -40,7 +41,7 @@ function UserChannels(props) {
 }
 
 UserChannels.propTypes = {
-  channels: PropTypes.array.isRequired
-}
+  channels: PropTypes.array.isRequired,
+};
 
 export default UserChannels;

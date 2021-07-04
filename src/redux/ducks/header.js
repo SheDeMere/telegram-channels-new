@@ -105,5 +105,4 @@ export const setAuth = (login, password) => (dispatch) => {
     });
 };
 
-//тут будут санки
 export default Header;

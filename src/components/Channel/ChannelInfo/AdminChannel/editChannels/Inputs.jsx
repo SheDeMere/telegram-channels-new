@@ -3,18 +3,18 @@ import styles from './Edit.module.css';
 import { Button, TextField } from '@material-ui/core';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { editChannel, editReviews } from '../../../../../redux/ducks/cards';
 import { useHotkeys } from 'react-hotkeys-hook';
+import { editChannel } from '../../../../../redux/ducks/cards'
+import { editRating } from '../../../../../redux/ducks/ratings'
 
-function Inputs(props) {
+function Inputs() {
   const id = parseInt(useParams().id);
 
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.cards.selectedChannel);
-  const dataReviews = useSelector(
-    (state) => state.cards.selectedChannelReviews,
-  );
+
+  const dataRatings = useSelector((state) => state.ratings.selectedRating);
 
   const [info, setInfo] = useState(false);
 
@@ -30,13 +30,13 @@ function Inputs(props) {
 
   const [category, setCategory] = useState(data.categoryId);
 
-  const [reviews, setReviews] = useState(dataReviews.star);
+  const [rating, setRating] = useState(dataRatings.star);
 
   const handleClick = () => {
     setInfo(true);
     window.location.reload();
+    dispatch(editRating(id, rating));
     dispatch(editChannel(category, name, login, link, followers, desk, id));
-    dispatch(editReviews(id, reviews));
   };
   useHotkeys(
     'enter',
@@ -105,8 +105,8 @@ function Inputs(props) {
             id="outlined-basic"
             label="Оценка"
             variant="outlined"
-            value={reviews}
-            onChange={(e) => setReviews(e.target.value)}
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
           />
         </div>
         <div className={styles.input}>

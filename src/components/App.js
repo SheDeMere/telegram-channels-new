@@ -4,6 +4,7 @@ import Header from './header/index';
 import Channels from './Channels/Channels';
 import Channel from './Channel/Channel';
 import Categories from './Categories';
+import EditName from './Channel/ChannelInfo/AdminChannel/editChannels'
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
           <Channels />
           <Route exact path="/:id">
             <Channel />
+          </Route>
+          <Route path="/edit/:id?">
+            <EditName />
           </Route>
         </Route>
       </Switch>

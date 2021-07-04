@@ -1,9 +1,9 @@
 .modal {
   position: fixed;
   width: 500px;
-  height: 650px;
+  height: 700px;
   margin: auto;
-  top: 200px;
+  top: 150px;
   left: 0;
   right: 0;
   z-index: 999;

@@ -2,7 +2,7 @@ import styles from './Edit.module.css';
 import ClearIcon from '@material-ui/icons/Clear';
 import { Link } from 'react-router-dom';
 import Inputs from './Inputs';
-import { useHotkeys } from 'react-hotkeys-hook';
+
 
 function EditName() {
   return (

@@ -7,13 +7,15 @@ import ReactLoading from 'react-loading';
 function AdminChannels(props) {
   const preloader = useSelector((state) => state.cards.loading);
 
+  const channels = props.channels && props.channels;
+
   return preloader ? (
     <div className={styles.preloader}>
       <ReactLoading type="spin" color="#7373ff" height={80} width={80} />
     </div>
   ) : (
     <div className={styles.channel_block}>
-      {props.channels.map((channel) => {
+      {channels.map((channel) => {
         return (
           <Link to={`/${channel.id}`}>
             <div className={styles.channel}>

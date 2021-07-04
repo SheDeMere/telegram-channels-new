@@ -32,6 +32,7 @@
     "prettify": "prettier --write ./src",
     "dev": "concurrently \"npm start\" \"nodemon server.js\""
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",

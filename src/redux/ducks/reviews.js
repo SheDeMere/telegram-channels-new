@@ -61,7 +61,7 @@ export function loadReviews(id) {
     dispatch({
       type: 'reviews/load/start',
     });
-    fetch(`http://localhost:3001/reviews?channelId=${id}`)
+    fetch(`/reviews?channelId=${id}`)
       .then((response) => {
         return response.json();
       })
@@ -79,7 +79,7 @@ export function addReview(channelId, text, userName) {
     dispatch({
       type: 'review/adding/start',
     });
-    fetch(`http://localhost:3001/reviews?channelId=${channelId}`, {
+    fetch(`/reviews?channelId=${channelId}`, {
       method: 'POST',
       body: JSON.stringify({
         channelId: channelId,
@@ -106,7 +106,7 @@ export function deleteReview(id) {
     dispatch({
       type: 'admin/review/deleting/start',
     });
-    fetch(`http://localhost:3001/reviews/${id}`, {
+    fetch(`/reviews/${id}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())

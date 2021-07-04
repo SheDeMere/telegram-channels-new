@@ -54,7 +54,7 @@ export function loadCategories() {
     dispatch({
       type: 'categories/load/start',
     });
-    fetch('http://localhost:3001/categories')
+    fetch('/categories')
       .then((response) => {
         return response.json();
       })

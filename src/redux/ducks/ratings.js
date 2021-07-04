@@ -46,7 +46,7 @@ export function loadRatings(id) {
     dispatch({
       type: 'ratings/load/start',
     });
-    fetch(`http://localhost:3001/ratings?channelId=${id}`)
+    fetch(`/ratings?channelId=${id}`)
       .then((response) => {
         return response.json();
       })
@@ -61,7 +61,7 @@ export function loadRatings(id) {
 
 export const selectedRatings = (id) => {
   return (dispatch) => {
-    fetch(`http://localhost:3001/ratings/${id}`)
+    fetch(`/ratings/${id}`)
       .then((res) => res.json())
       .then((json) => {
         dispatch({
@@ -74,7 +74,7 @@ export const selectedRatings = (id) => {
 
 export const editRating = (id, rating) => {
   return (dispatch) => {
-    fetch(`http://localhost:3001/ratings/${id}`, {
+    fetch(`/ratings/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         id: id,
@@ -95,7 +95,7 @@ export const editRating = (id, rating) => {
 
 export const addRating = (id, rating) => {
   return (dispatch) => {
-    fetch('http://localhost:3001/ratings', {
+    fetch('/ratings', {
       method: 'POST',
       body: JSON.stringify({
         id: id,

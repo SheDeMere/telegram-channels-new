@@ -23,6 +23,12 @@ function AdminChannel(props) {
   const userName = useSelector((state) => {
     return state.header.name;
   });
+  const addingReview = useSelector((state) => {
+    return state.reviews.addingReview;
+  });
+  const deletingReview = useSelector((state) => {
+    return state.reviews.deletingReview;
+  });
   const showDeleteChannelModal = useSelector((state) => {
     return state.cards.showDeleteChannelModal;
   });
@@ -115,6 +121,7 @@ function AdminChannel(props) {
                               </span>
                             </div>
                             <button
+                              disabled={deletingReview}
                               className={styles.review_delete_btn}
                               onClick={() => handleDeleteReview(item.id)}
                             >
@@ -132,6 +139,7 @@ function AdminChannel(props) {
                         />
                         <Link to={`/${channel.id}`}>
                           <button
+                            disabled={addingReview}
                             className={styles.review_btn}
                             onClick={() =>
                               handleAddReview(channel.id, text, userName)

@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './assets/logo.jpg';
-import styles from './Header.module.css'
+import styles from './Header.module.css';
 function Logo(props) {
   return (
     <div className={styles.logo}>

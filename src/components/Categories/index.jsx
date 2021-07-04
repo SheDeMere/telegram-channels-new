@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react';
+import UserCategories from './UserCategories';
+import { useSelector } from 'react-redux';
+import AdminCategories from './AdminCategories';
 
-import UserCategories from './UserCategories'
-import { useSelector } from 'react-redux'
-import AdminCategories from './AdminCategories'
+function Categories() {
+  const admin = useSelector((state) => state.header.admin);
 
-function Categories (props) {
-  const admin = useSelector(state => state.header.admin);
-
-  return (admin ? <AdminCategories /> : <UserCategories />
-  )
+  return admin ? <AdminCategories /> : <UserCategories />;
 }
 
-export default Categories
+export default Categories;

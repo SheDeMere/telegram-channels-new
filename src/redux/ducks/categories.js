@@ -1,36 +1,35 @@
 const initialState = {
   items: [],
   loading: false,
-  modalWindow: false
+  modalWindow: false,
 };
 
 const Categories = (state = initialState, action) => {
   switch (action.type) {
-
-    case 'categories/load/start' :
+    case 'categories/load/start':
       return {
         ...state,
-        loading:true
+        loading: true,
       };
 
     case 'categories/load/success':
       return {
         ...state,
-        loading:false,
-        items:action.payload
-      }
+        loading: false,
+        items: action.payload,
+      };
 
     case 'open/modal/start':
       return {
         ...state,
-        modalWindow: true
-      }
+        modalWindow: true,
+      };
 
     case 'close/modal/start':
       return {
         ...state,
-        modalWindow: false
-      }
+        modalWindow: false,
+      };
     default:
       return state;
   }
@@ -40,15 +39,15 @@ const Categories = (state = initialState, action) => {
 
 export const openModal = () => {
   return {
-    type: 'open/modal/start'
-  }
-}
+    type: 'open/modal/start',
+  };
+};
 
 export const closeModal = () => {
   return {
-    type: 'close/modal/start'
-  }
-}
+    type: 'close/modal/start',
+  };
+};
 
 export function loadCategories() {
   return (dispatch) => {
@@ -67,9 +66,6 @@ export function loadCategories() {
       });
   };
 }
-
-
-
 
 //тут будут санки
 

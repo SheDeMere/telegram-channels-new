@@ -10,14 +10,13 @@
 .channel {
   width: 200px;
   padding: 12px 5px 10px 5px;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: #ffffff;
-  border: 2px solid #2096d4;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   border-radius: 26px;
-  margin-bottom: 30px;
+  transition: transform 0.2s ease-in-out;
 }
-.channel:hover{
-  background-color: lightblue;
+.channel:hover {
   cursor: pointer;
 }
 .channel_name {

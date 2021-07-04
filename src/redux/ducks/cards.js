@@ -3,7 +3,7 @@ const initialState = {
   items: [],
   selectedChannel: [],
   selectedChannelReviews: [],
-  showDeleteChannelModal:false,
+  showDeleteChannelModal: false,
 };
 
 const Cards = (state = initialState, action) => {
@@ -22,8 +22,8 @@ const Cards = (state = initialState, action) => {
     case 'channelsByCategory/load/success':
       return {
         ...state,
-        items:action.payload
-      }
+        items: action.payload,
+      };
     case 'edit/items':
       return {
         ...state,
@@ -37,44 +37,42 @@ const Cards = (state = initialState, action) => {
     case 'open/deleteChannelModal':
       return {
         ...state,
-        showDeleteChannelModal: action.payload
-      }
+        showDeleteChannelModal: action.payload,
+      };
     case 'admin/channel/delete':
       return {
         ...state,
-        items: state.items.filter((channel)=>{
-          if(channel.id === action.payload) {
-            return false
+        items: state.items.filter((channel) => {
+          if (channel.id === action.payload) {
+            return false;
           }
-          return channel
-    }),
-        showDeleteChannelModal: false
-  };
+          return channel;
+        }),
+        showDeleteChannelModal: false,
+      };
     case 'close/deleteChannelModal':
       return {
         ...state,
-        showDeleteChannelModal: false
-      }
-
+        showDeleteChannelModal: false,
+      };
 
     case 'all/channels/success':
       return {
         ...state,
-        items: action.payload
-      }
+        items: action.payload,
+      };
 
     case 'add/channel/success':
       return {
         ...state,
-        items: action.payload
-      }
+        items: action.payload,
+      };
 
     case 'selected/reviews/success':
       return {
         ...state,
-        selectedChannelReviews: action.payload
-
-      }
+        selectedChannelReviews: action.payload,
+      };
 
     default:
       return state;
@@ -111,17 +109,17 @@ export const editChannel =
   };
 
 export const allChannels = () => {
-  return dispatch => {
+  return (dispatch) => {
     fetch('http://localhost:3001/channels')
-      .then(res => res.json())
-      .then(json => {
+      .then((res) => res.json())
+      .then((json) => {
         dispatch({
           type: 'all/channels/success',
-          payload: json
-        })
-      })
-  }
-}
+          payload: json,
+        });
+      });
+  };
+};
 
 export function loadChannels() {
   return (dispatch) => {
@@ -161,9 +159,9 @@ export function openChannelsByCategory(categoryId) {
 
 export function openDeleteChannelModal(show) {
   return {
-      type: 'open/deleteChannelModal',
-      payload: !show
-    };
+    type: 'open/deleteChannelModal',
+    payload: !show,
+  };
 }
 export function closeDeleteChannelModal() {
   return {
@@ -184,9 +182,17 @@ export function deleteChannel(id) {
       });
   };
 }
-export const addChannel = (id, category ,name, login, link, followers, desk) => {
-  return dispatch => {
-    dispatch({ type: 'add/channel/start'})
+export const addChannel = (
+  id,
+  category,
+  name,
+  login,
+  link,
+  followers,
+  desk,
+) => {
+  return (dispatch) => {
+    dispatch({ type: 'add/channel/start' });
     fetch('http://localhost:3001/channels', {
       method: 'POST',
       body: JSON.stringify({
@@ -196,55 +202,55 @@ export const addChannel = (id, category ,name, login, link, followers, desk) => 
         channelLogin: login,
         imgUrl: link,
         followers: followers,
-        desk: desk
+        desk: desk,
       }),
       headers: {
         'Content-type': 'application/json; charset=utf-8',
-      }
-    })
-  }
-}
+      },
+    });
+  };
+};
 
 export const addReviews = (id, reviews) => {
-  return dispatch => {
+  return (dispatch) => {
     fetch('http://localhost:3001/ratings', {
       method: 'POST',
       body: JSON.stringify({
         id: id,
         channelId: id,
-        star: reviews
+        star: reviews,
       }),
-      headers: { 'Content-type': 'application/json; charset=utf-8' }
-    })
-  }
-}
+      headers: { 'Content-type': 'application/json; charset=utf-8' },
+    });
+  };
+};
 
 export const selectedReviews = (id) => {
-  return dispatch => {
+  return (dispatch) => {
     fetch(`http://localhost:3001/ratings/${id}`)
-      .then(res => res.json())
-      .then(json => {
+      .then((res) => res.json())
+      .then((json) => {
         dispatch({
           type: 'selected/reviews/success',
-          payload: json
-        })
-      })
-  }
-}
+          payload: json,
+        });
+      });
+  };
+};
 
 export const editReviews = (id, reviews) => {
-  return dispatch => {
+  return (dispatch) => {
     fetch(`http://localhost:3001/ratings/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         id: id,
         channelId: id,
-        star: reviews
+        star: reviews,
       }),
-      headers: { 'Content-type': 'application/json; charset=utf-8' }
-    })
-  }
-}
+      headers: { 'Content-type': 'application/json; charset=utf-8' },
+    });
+  };
+};
 //тут будут санки
 
 export default Cards;

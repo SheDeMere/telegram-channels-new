@@ -1,141 +1,141 @@
 .modal {
-    visibility: hidden;
-    opacity: 0;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: #ffffff;
-    color: black;
-    padding: 2rem;
-    transition: opacity 0.25s;
-    z-index: 3;
-    border-radius: 5px;
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  color: black;
+  padding: 2rem;
+  transition: opacity 0.25s;
+  z-index: 3;
+  border-radius: 5px;
 }
 .modal.show {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.25s;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.25s;
 }
 .modal_bg.show {
-    visibility: hidden;
-    opacity: 0;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: gray;
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: gray;
 }
 .modal_bg.show {
-    visibility: visible;
-    opacity: 50%;
-    transition: opacity 0.25s;
+  visibility: visible;
+  opacity: 50%;
+  transition: opacity 0.25s;
 }
 .close {
-    height: 0px;
-    display: none;
+  height: 0px;
+  display: none;
 }
 .modal_btn {
-    font-size: 30px;
-    color: gray;
-    padding: 10px 5px;
-    position: absolute;
-    right: 20px;
-    top: 5px;
-    outline: none;
-    background: transparent;
-    border: none;
+  font-size: 30px;
+  color: gray;
+  padding: 10px 5px;
+  position: absolute;
+  right: 20px;
+  top: 5px;
+  outline: none;
+  background: transparent;
+  border: none;
 }
 .modal_btn {
-    cursor: pointer;
+  cursor: pointer;
 }
 .channel_card {
-    width: 1000px;
-    height: 500px;
-    font-family: "Roboto", sans-serif;
+  width: 1000px;
+  height: 500px;
+  font-family: 'Roboto', sans-serif;
 }
-.channel_wrap{
-    display: flex;
-    justify-content: space-between;
-    height: 500px;
+.channel_wrap {
+  display: flex;
+  justify-content: space-between;
+  height: 500px;
 }
 .channel_info {
-    width: 400px;
-    align-self: center;
+  width: 400px;
+  align-self: center;
 }
 .channel_name {
-    text-align: center;
-    font-size: 22px;
-    font-weight: 700;
-    width: 300px;
-    margin: 0 auto;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  width: 300px;
+  margin: 0 auto;
 }
 .channel_img {
-    text-align: center;
-    margin: 20px 0;
+  text-align: center;
+  margin: 20px 0;
 }
 .channel_img img {
-    height: 128px;
-    width: 128px;
+  height: 128px;
+  width: 128px;
 }
 .channel_rating {
-    text-align: center;
+  text-align: center;
 }
 .rating_title {
-    color: gray;
-    font-size: 18px;
+  color: gray;
+  font-size: 18px;
 }
 .channel_reviews {
-    border-left: lightblue 1px solid;
-    padding-left: 20px;
-    padding-right: 10px;
-    width: 580px;
+  border-left: lightblue 1px solid;
+  padding-left: 20px;
+  padding-right: 10px;
+  width: 580px;
 }
 .reviews_title {
-    font-size: 26px;
-    color: lightblue;
-    font-weight: 700;
-    margin-bottom: 10px;
+  font-size: 26px;
+  color: lightblue;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 .review_form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: absolute;
-    bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 30px;
 }
-.review_form input{
-    display: block;
-    outline: none;
-    padding:10px;
-    border-radius:10px;
-    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
-    width: 530px;
-    border: none;
-    color: #444444;
-    font-family: 'Roboto', sans-serif;
+.review_form input {
+  display: block;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  width: 530px;
+  border: none;
+  color: #444444;
+  font-family: 'Roboto', sans-serif;
 }
-.review_btn  {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 25px;
-    cursor: pointer;
-    color: gray;
-    margin-left: 10px;
+.review_btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 25px;
+  cursor: pointer;
+  color: gray;
+  margin-left: 10px;
 }
 .review_wrap {
-    margin-bottom: 10px;
-    font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
 }
 .review_name {
-    font-size: 16px;
-    color: gray;
-    font-style: italic;
+  font-size: 16px;
+  color: gray;
+  font-style: italic;
 }
 .review_text {
-    font-size: 16px;
-    color: black;
-    padding-left: 5px;
+  font-size: 16px;
+  color: black;
+  padding-left: 5px;
 }

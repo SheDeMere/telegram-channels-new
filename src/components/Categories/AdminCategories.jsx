@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadCategories, openModal } from '../../redux/ducks/categories'
 import { allChannels, openChannelsByCategory } from '../../redux/ducks/cards'
 import styles from './Categories.module.css'
-import { Link } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 import AddChannels from './Modal/AddChannels'
 
 function AdminCategories (props) {
@@ -32,7 +32,7 @@ function AdminCategories (props) {
     <div>
       <AddChannels />
       <div className={styles.categories_wrap}>
-        <Link to='/all'>
+        <Link to='/all' >
           <button
             onClick={handleClick}
             className={styles.category}
@@ -42,7 +42,7 @@ function AdminCategories (props) {
         </Link>
         {categories && categories.map((category)=>{
           return (
-            <Link to={`/${category.url}`}>
+            <Link to={`/${category.url}`} >
               <button
                 onClick={()=>handleOpenChannelsByCategory(category.id)}
                 className={styles.category}>{category.name}

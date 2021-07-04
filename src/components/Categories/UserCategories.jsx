@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadCategories } from '../../redux/ducks/categories'
 import { allChannels, openChannelsByCategory } from '../../redux/ducks/cards'
 import styles from './Categories.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 function UserCategories (props) {
   const dispatch = useDispatch();
@@ -23,6 +23,7 @@ function UserCategories (props) {
   const handleClick = () => {
     dispatch(allChannels())
   }
+
   return (
     <div>
       <div className={styles.categories_wrap}>

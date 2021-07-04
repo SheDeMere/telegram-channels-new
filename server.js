@@ -20,18 +20,6 @@ server.post('/authorization/login', (req, res) => {
   });
 });
 
-// добавление отзыва для определенного канала
-
-// Удаление отзыва
-
-
-
-
-
-
-
-
-
 server.use(middlewares);
 server.use(router);
 server.listen(3001, () => {

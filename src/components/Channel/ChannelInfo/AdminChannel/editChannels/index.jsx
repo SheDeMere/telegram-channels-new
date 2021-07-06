@@ -3,7 +3,6 @@ import ClearIcon from '@material-ui/icons/Clear';
 import { Link } from 'react-router-dom';
 import Inputs from './Inputs';
 
-
 function EditName() {
   return (
     <div className={styles['modal_back']}>

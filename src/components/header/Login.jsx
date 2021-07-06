@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Header.module.css';
 import { Button } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,7 +23,6 @@ function Login() {
   useHotkeys('ctrl + l', () => {
     logout();
   });
-
   return (
     <div className={styles.users}>
       {userName === '' ? (

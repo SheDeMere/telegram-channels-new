@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './assets/logo.jpg';
 import styles from './Header.module.css';
-function Logo(props) {
+
+function Logo() {
   return (
     <div className={styles.logo}>
       <div>

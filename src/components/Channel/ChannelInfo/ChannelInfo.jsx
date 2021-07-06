@@ -4,9 +4,9 @@ import UserChannel from './UserChannel/UserChannel';
 import AdminChannel from './AdminChannel/AdminChannel';
 import GuestChannel from './GuestChannel/GuestChannel';
 import { selectedChannel } from '../../../redux/ducks/cards';
-import { loadRatings, selectedRatings } from '../../../redux/ducks/ratings'
-import { loadReviews } from '../../../redux/ducks/reviews'
-
+import { loadRatings, selectedRatings } from '../../../redux/ducks/ratings';
+import { loadReviews } from '../../../redux/ducks/reviews';
+import PropTypes from 'prop-types';
 
 function ChannelInfo(props) {
   const dispatch = useDispatch();
@@ -45,5 +45,9 @@ function ChannelInfo(props) {
   }
   return <GuestChannel channel={channel} rating={rating} reviews={reviews} />;
 }
+
+ChannelInfo.propTypes = {
+  channelId: PropTypes.number.isRequired,
+};
 
 export default ChannelInfo;

@@ -25,7 +25,6 @@ function Inputs() {
     },
     { enableOnTags: ['INPUT'] },
   );
-
   return (
     <div className={styles['inputs_group']}>
       <div>

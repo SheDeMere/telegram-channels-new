@@ -12,7 +12,6 @@ function AddChannels() {
   const handleClick = () => {
     dispatch(closeModal());
   };
-
   return (
     modal && (
       <div className={styles['modal_back']}>

@@ -16,6 +16,9 @@ function AdminCategories() {
   const categories = useSelector((state) => {
     return state.categories.items;
   });
+  const channelCategoryId = useSelector((state) => {
+    return state.cards.channelCategoryId;
+  });
 
   const handleOpenChannelsByCategory = (categoryId) => {
     dispatch(openChannelsByCategory(categoryId));
@@ -34,24 +37,28 @@ function AdminCategories() {
       <AddChannels />
       <div className={styles['categories_wrap']}>
         <div>
-          <Link to="/all">
-            <button onClick={handleClick} className={styles.category}>
+          <Link to="/all" className={` ${
+            channelCategoryId.categoryId === 0 ? styles.selected : ''
+          }`}>
+            <button onClick={handleClick} className={styles.category} >
               Все
             </button>
           </Link>
           {categories &&
-          categories.map((category) => {
-            return (
-              <Link to={`/${category.url}`}>
-                <button
-                  onClick={() => handleOpenChannelsByCategory(category.id)}
-                  className={styles.category}
-                >
-                  {category.name}
-                </button>
-              </Link>
-            );
-          })}
+            categories.map((category) => {
+              return (
+                <Link to={`/${category.url}`} className={` ${
+                  channelCategoryId.categoryId === category.id ? styles.selected : ''
+                }`}>
+                  <button
+                    onClick={() => handleOpenChannelsByCategory(category.id)}
+                    className={styles.category}
+                  >
+                    {category.name}
+                  </button>
+                </Link>
+              );
+            })}
         </div>
         <div className={styles.add}>
           <Link to="/add">

@@ -83,7 +83,7 @@ export const logoutStart = () => {
 };
 
 export const setAuth = (login, password) => (dispatch) => {
-  fetch(`http://localhost:3001/authorization/login`, {
+  fetch(`/authorization/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -105,5 +105,4 @@ export const setAuth = (login, password) => (dispatch) => {
     });
 };
 
-//тут будут санки
 export default Header;

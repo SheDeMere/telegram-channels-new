@@ -1,7 +1,7 @@
 const initialState = {
   loading: false,
-  addingReview:false,
-  deletingReview:false,
+  addingReview: false,
+  deletingReview: false,
   items: [],
 };
 
@@ -19,11 +19,13 @@ const Reviews = (state = initialState, action) => {
         loading: false,
         items: action.payload,
       };
+
     case 'review/adding/start':
       return {
         ...state,
-        addingReview: true
+        addingReview: true,
       };
+
     case 'user/review/add':
       return {
         ...state,
@@ -34,8 +36,9 @@ const Reviews = (state = initialState, action) => {
     case 'admin/review/deleting/start':
       return {
         ...state,
-        deletingReview: true
-      }
+        deletingReview: true,
+      };
+
     case 'admin/review/delete':
       return {
         ...state,
@@ -58,7 +61,7 @@ export function loadReviews(id) {
     dispatch({
       type: 'reviews/load/start',
     });
-    fetch(`http://localhost:3001/reviews?channelId=${id}`)
+    fetch(`/reviews?channelId=${id}`)
       .then((response) => {
         return response.json();
       })
@@ -74,9 +77,9 @@ export function loadReviews(id) {
 export function addReview(channelId, text, userName) {
   return (dispatch) => {
     dispatch({
-      type: 'review/adding/start'
+      type: 'review/adding/start',
     });
-    fetch(`http://localhost:3001/reviews?channelId=${channelId}`, {
+    fetch(`/reviews?channelId=${channelId}`, {
       method: 'POST',
       body: JSON.stringify({
         channelId: channelId,
@@ -101,9 +104,9 @@ export function addReview(channelId, text, userName) {
 export function deleteReview(id) {
   return (dispatch) => {
     dispatch({
-      type: 'admin/review/deleting/start'
+      type: 'admin/review/deleting/start',
     });
-    fetch(`http://localhost:3001/reviews/${id}`, {
+    fetch(`/reviews/${id}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())

@@ -2,6 +2,7 @@ const initialState = {
   loading: false,
   items: [],
   selectedChannel: [],
+  channelCategoryId: {},
   showDeleteChannelModal: false,
 };
 
@@ -19,11 +20,11 @@ const Cards = (state = initialState, action) => {
         loading: false,
         items: action.payload,
       };
-
     case 'channelsByCategory/load/success':
       return {
         ...state,
         items: action.payload,
+        channelCategoryId: action.channelCategoryId
       };
 
     case 'open/deleteChannelModal':
@@ -53,27 +54,28 @@ const Cards = (state = initialState, action) => {
     case 'select/channel/success':
       return {
         ...state,
-        selectedChannel: action.payload
-      }
-
+        selectedChannel: action.payload,
+      };
 
     case 'edit/channel/success':
       return {
         ...state,
-        items:  [...state.items, action.payload]
+        items: [...state.items, action.payload],
       };
 
     case 'add/channel/success':
       return {
         ...state,
-        items: [...state.items, action.payload]
+        items: [...state.items, action.payload],
       };
-
 
     case 'all/channels/success':
       return {
         ...state,
         items: action.payload,
+        channelCategoryId: {
+          categoryId:0
+        }
       };
 
     default:
@@ -82,7 +84,7 @@ const Cards = (state = initialState, action) => {
 };
 
 export const selectedChannel = (id) => (dispatch) => {
-  fetch(`http://localhost:3001/channels/${id}`)
+  fetch(`/channels/${id}`)
     .then((res) => res.json())
     .then((json) => {
       dispatch({
@@ -94,7 +96,7 @@ export const selectedChannel = (id) => (dispatch) => {
 
 export const editChannel =
   (category, name, login, link, followers, desk, id) => (dispatch) => {
-    fetch(`http://localhost:3001/channels/${id}`, {
+    fetch(`/channels/${id}`, {
       method: 'PATCH',
       body: JSON.stringify({
         categoryId: category,
@@ -108,18 +110,18 @@ export const editChannel =
         'Content-type': 'application/json; charset=utf-8',
       },
     })
-      .then(res => res.json())
-      .then(json => {
+      .then((res) => res.json())
+      .then((json) => {
         dispatch({
           type: 'edit/channel/success',
-          payload: json
-        })
-      })
+          payload: json,
+        });
+      });
   };
 
 export const allChannels = () => {
   return (dispatch) => {
-    fetch('http://localhost:3001/channels')
+    fetch('/channels')
       .then((res) => res.json())
       .then((json) => {
         dispatch({
@@ -135,7 +137,7 @@ export function loadChannels() {
     dispatch({
       type: 'channels/load/start',
     });
-    fetch('http://localhost:3001/channels')
+    fetch('/channels')
       .then((response) => {
         return response.json();
       })
@@ -150,10 +152,7 @@ export function loadChannels() {
 
 export function openChannelsByCategory(categoryId) {
   return (dispatch) => {
-    dispatch({
-      type: 'channelsByCategory/load/start',
-    });
-    fetch(`http://localhost:3001/channels?categoryId=${categoryId}`)
+    fetch(`/channels?categoryId=${categoryId}`)
       .then((response) => {
         return response.json();
       })
@@ -161,6 +160,7 @@ export function openChannelsByCategory(categoryId) {
         return dispatch({
           type: 'channelsByCategory/load/success',
           payload: json,
+          channelCategoryId:json[0]
         });
       });
   };
@@ -179,7 +179,7 @@ export function closeDeleteChannelModal() {
 }
 export function deleteChannel(id) {
   return (dispatch) => {
-    fetch(`http://localhost:3001/channels/${id}`, {
+    fetch(`/channels/${id}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
@@ -202,7 +202,7 @@ export const addChannel = (
 ) => {
   return (dispatch) => {
     dispatch({ type: 'add/channel/start' });
-    fetch('http://localhost:3001/channels', {
+    fetch('/channels', {
       method: 'POST',
       body: JSON.stringify({
         id: id,
@@ -217,18 +217,16 @@ export const addChannel = (
         'Content-type': 'application/json; charset=utf-8',
       },
     })
-      .then(res => res.json())
-      .then(json => {
-         dispatch({
-           type: 'add/channel/success',
-           payload: json
-         })
-      })
-  }
+      .then((res) => res.json())
+      .then((json) => {
+        dispatch({
+          type: 'add/channel/success',
+          payload: json,
+        });
+      });
+  };
 };
 
 
-
-//тут будут санки
 
 export default Cards;

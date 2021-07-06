@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.8.3",
     "concurrently": "^6.2.0",
     "json-server": "^0.16.3",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hotkeys-hook": "^3.3.2",
@@ -31,6 +32,7 @@
     "prettify": "prettier --write ./src",
     "dev": "concurrently \"npm start\" \"nodemon server.js\""
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",

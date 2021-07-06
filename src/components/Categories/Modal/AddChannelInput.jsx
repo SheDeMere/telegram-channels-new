@@ -4,7 +4,7 @@ import { Button, TextField } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { addChannel } from '../../../redux/ducks/cards';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { addRating } from '../../../redux/ducks/ratings'
+import { addRating } from '../../../redux/ducks/ratings';
 
 function AddChannelInput() {
   const dispatch = useDispatch();
@@ -28,8 +28,8 @@ function AddChannelInput() {
   const dataChannel = useSelector((state) => state.cards.items);
 
   const itemsId = dataChannel.map((items) => {
-      return items.id;
-    });
+    return items.id;
+  });
 
   const id = itemsId && itemsId[itemsId.length - 1] + 1;
 
@@ -38,6 +38,7 @@ function AddChannelInput() {
     dispatch(addRating(id, reviews));
     dispatch(addChannel(id, category, name, login, link, followers, desk));
   };
+
   useHotkeys(
     'enter',
     () => {
@@ -45,7 +46,6 @@ function AddChannelInput() {
     },
     { enableOnTags: ['INPUT'] },
   );
-
   return (
     <div>
       <div>

@@ -55,7 +55,7 @@
   "channels": [
     {
       "id": 1,
-      "categoryId": "1",
+      "categoryId": 1,
       "name": "NEXTA",
       "channelLogin": "@nexta",
       "imgUrl": "https://static10.tgstat.ru/channels/_0/c8/c8fb80e575f93c39de19ba289298caa9.jpg",
@@ -73,7 +73,7 @@
     },
     {
       "id": 3,
-      "categoryId": "1",
+      "categoryId": 1,
       "name": "BLACK JOURNAL | Новости Звезд",
       "channelLogin": "@blackJournall",
       "imgUrl": "https://c.tcdn.co/f23/60c/f2360c44-7cf0-11ea-9f7e-96000024ad61/channel128.png",
@@ -82,7 +82,7 @@
     },
     {
       "id": 4,
-      "categoryId": "2",
+      "categoryId": 2,
       "name": "Медуза — LIVE",
       "channelLogin": "@meduza",
       "imgUrl": "https://c.tcdn.co/ea1/4e3/ea14e3d6-76c9-11e6-b8a1-040157cdaf01/channel128.png",
@@ -118,7 +118,7 @@
     },
     {
       "id": 8,
-      "categoryId": "2",
+      "categoryId": 2,
       "name": "TELEGRA4CH",
       "channelLogin": "@4chan",
       "imgUrl": "https://static10.tgstat.ru/channels/_0/20/2024d9a40d391a1b11a988c5a64416c7.jpg",
@@ -235,7 +235,7 @@
     },
     {
       "id": 21,
-      "categoryId": "1",
+      "categoryId": 1,
       "name": "Testing function",
       "channelLogin": "@ReactJS",
       "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",

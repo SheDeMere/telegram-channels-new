@@ -21,6 +21,5 @@ export const store = createStore(
 
 store.subscribe(() => {
   const state = store.getState();
-
   localStorage.setItem('auth', JSON.stringify(state.header));
 });

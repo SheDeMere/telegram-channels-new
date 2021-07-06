@@ -2,6 +2,7 @@ const initialState = {
   loading: false,
   items: [],
   selectedChannel: [],
+  channelCategoryId: {},
   showDeleteChannelModal: false,
 };
 
@@ -19,11 +20,11 @@ const Cards = (state = initialState, action) => {
         loading: false,
         items: action.payload,
       };
-
     case 'channelsByCategory/load/success':
       return {
         ...state,
         items: action.payload,
+        channelCategoryId: action.channelCategoryId
       };
 
     case 'open/deleteChannelModal':
@@ -72,6 +73,9 @@ const Cards = (state = initialState, action) => {
       return {
         ...state,
         items: action.payload,
+        channelCategoryId: {
+          categoryId:0
+        }
       };
 
     default:
@@ -148,9 +152,6 @@ export function loadChannels() {
 
 export function openChannelsByCategory(categoryId) {
   return (dispatch) => {
-    dispatch({
-      type: 'channelsByCategory/load/start',
-    });
     fetch(`/channels?categoryId=${categoryId}`)
       .then((response) => {
         return response.json();
@@ -159,6 +160,7 @@ export function openChannelsByCategory(categoryId) {
         return dispatch({
           type: 'channelsByCategory/load/success',
           payload: json,
+          channelCategoryId:json[0]
         });
       });
   };

@@ -1,10 +1,10 @@
 const initialState = {
-  modalWindow: JSON.parse(localStorage.getItem('auth')).modalWindow || false,
-  admin: JSON.parse(localStorage.getItem('auth')).admin || false,
-  user: JSON.parse(localStorage.getItem('auth')).user || false,
-  token: JSON.parse(localStorage.getItem('auth')).token || null,
-  error: JSON.parse(localStorage.getItem('auth')).error || false,
-  name: JSON.parse(localStorage.getItem('auth')).name || '',
+  modalWindow: false,
+  admin: JSON.parse(localStorage.getItem('admin')) || false,
+  user: JSON.parse(localStorage.getItem('user')) || false,
+  token: localStorage.getItem('token') || null,
+  error: false,
+  name: localStorage.getItem('name') || '',
 };
 
 const Header = (state = initialState, action) => {
@@ -31,16 +31,19 @@ const Header = (state = initialState, action) => {
     case 'access/admin':
       return {
         ...state,
+        user:false,
         admin: true,
-        user: false,
         error: false,
         modalWindow: false,
+        name: action.payload.name,
+        token: action.payload.token,
       };
 
     case 'access/user':
       return {
         ...state,
         user: true,
+        admin: false,
         error: false,
         modalWindow: false,
         name: action.payload.name,
@@ -76,7 +79,10 @@ export const openWindow = () => {
 };
 
 export const logoutStart = () => {
-  localStorage.removeItem('auth');
+  localStorage.removeItem('token');
+  localStorage.removeItem('name');
+  localStorage.removeItem('user');
+  localStorage.removeItem('admin');
   return {
     type: 'logout/start',
   };
@@ -93,13 +99,22 @@ export const setAuth = (login, password) => (dispatch) => {
   })
     .then((res) => res.json())
     .then((json) => {
+      localStorage.setItem('token', json.token);
+      localStorage.setItem('name', json.name);
+      localStorage.setItem('user', 'true');
+      localStorage.setItem('admin', 'false');
       dispatch({
         type: 'access/user',
         payload: json,
       });
       if (json.login === 'admin' && json.password === 'admin') {
+        localStorage.setItem('token', json.token);
+        localStorage.setItem('name', json.name);
+        localStorage.setItem('user', 'false');
+        localStorage.setItem('admin', 'true');
         dispatch({
           type: 'access/admin',
+          payload:json
         });
       }
     });

@@ -8,18 +8,8 @@ const logger = createLogger({
   collapsed: true,
 });
 
-const localUser = localStorage.getItem('auth');
-
-const preloadedState = {
-  auth: localUser ? JSON.parse(localUser) : undefined,
-};
 export const store = createStore(
   combineReducers({ header, categories, cards, reviews, ratings }),
-  preloadedState,
   applyMiddleware(logger, thunk),
 );
 
-store.subscribe(() => {
-  const state = store.getState();
-  localStorage.setItem('auth', JSON.stringify(state.header));
-});

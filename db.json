@@ -412,18 +412,6 @@
       "text": "Скажу так: информация на этом канале подкрепляется визуальным контентом не для слабонервных"
     },
     {
-      "id": 11,
-      "channelId": 6,
-      "name": "Tima",
-      "text": "Один из лучших каналов в ТГ, посвященный мемасикам и смешным картинкам"
-    },
-    {
-      "id": 12,
-      "channelId": 6,
-      "name": "Yana",
-      "text": "МДК уже давно не тот, сейчас больше воруют картинки с других более меньших каналов, чем что-то придумывают сами"
-    },
-    {
       "id": 13,
       "channelId": 7,
       "name": "Mila",
@@ -608,6 +596,66 @@
       "name": "Admin",
       "text": "dd",
       "id": 43
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 1",
+      "id": 44
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 2",
+      "id": 45
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 3",
+      "id": 46
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 4",
+      "id": 47
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 5",
+      "id": 48
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 6",
+      "id": 49
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 7",
+      "id": 50
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 8",
+      "id": 51
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 9",
+      "id": 52
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 10",
+      "id": 53
     }
   ]
 }

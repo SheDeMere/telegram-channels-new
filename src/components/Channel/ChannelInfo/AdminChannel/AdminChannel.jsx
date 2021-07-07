@@ -39,6 +39,7 @@ function AdminChannel(props) {
 
   const handleAddReview = (channelId, text, userName) => {
     dispatch(addReview(channelId, text, userName));
+    setText('')
   };
 
   const handleDeleteReview = (id) => {

@@ -25,6 +25,7 @@ function UserChannel(props) {
 
   const handleAddReview = (channelId, text, userName) => {
     dispatch(addReview(channelId, text, userName));
+    setText('')
   };
   return (
     <div>

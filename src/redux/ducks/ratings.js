@@ -113,4 +113,5 @@ export const addRating = (id, rating) => {
       });
   };
 };
+
 export default Ratings;

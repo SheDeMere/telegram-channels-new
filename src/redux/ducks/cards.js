@@ -172,11 +172,13 @@ export function openDeleteChannelModal(show) {
     payload: !show,
   };
 }
+
 export function closeDeleteChannelModal() {
   return {
     type: 'close/deleteChannelModal',
   };
 }
+
 export function deleteChannel(id) {
   return (dispatch) => {
     fetch(`/channels/${id}`, {
@@ -191,6 +193,7 @@ export function deleteChannel(id) {
       });
   };
 }
+
 export const addChannel = (
   id,
   category,
@@ -226,7 +229,5 @@ export const addChannel = (
       });
   };
 };
-
-
 
 export default Cards;

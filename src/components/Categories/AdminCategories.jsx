@@ -9,13 +9,10 @@ import AddChannels from './Modal/AddChannels';
 function AdminCategories() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loadCategories());
-  }, [dispatch]);
-
   const categories = useSelector((state) => {
     return state.categories.items;
   });
+
   const channelCategoryId = useSelector((state) => {
     return state.cards.channelCategoryId;
   });
@@ -32,6 +29,9 @@ function AdminCategories() {
     dispatch(openModal());
   };
 
+  useEffect(() => {
+    dispatch(loadCategories());
+  }, [dispatch]);
   return (
     <div>
       <AddChannels />

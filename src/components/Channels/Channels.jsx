@@ -15,6 +15,7 @@ function Channels() {
   const auth = useSelector((state) => {
     return state.header;
   });
+
   const channels = useSelector((state) => {
     return state.cards.items;
   });

@@ -67,6 +67,4 @@ export function loadCategories() {
   };
 }
 
-
-
 export default Categories;

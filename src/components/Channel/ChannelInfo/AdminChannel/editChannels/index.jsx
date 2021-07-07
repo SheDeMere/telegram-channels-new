@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import Inputs from './Inputs';
 
 function EditName() {
+  const handleClick = () => {
+    window.location.reload()
+  }
   return (
     <div className={styles['modal_back']}>
       <div className={styles.modal}>
         <Link to="/">
-          <ClearIcon className={styles.close} />
+          <ClearIcon className={styles.close} onClick={handleClick} />
         </Link>
         <div className={styles.forms}>
           <h3>Редактировать</h3>

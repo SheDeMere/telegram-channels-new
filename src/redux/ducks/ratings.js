@@ -28,20 +28,9 @@ const Ratings = (state = initialState, action) => {
     case 'edit/rating/success':
       return {
         ...state,
-        items: state.items.map(item => {
-          if (item.id === action.id) {
-            return [...state.items, action.payload]
-          }
-
-          return item
-        })
+          items: action.payload
       };
 
-    case 'add/rating/success':
-      return {
-        ...state,
-        items: [...state.items, action.payload],
-      };
     default:
       return state;
   }
@@ -81,7 +70,7 @@ export const selectedRatings = (id) => {
 export const editRating = (id, rating) => {
   return (dispatch) => {
     fetch(`/ratings/${id}`, {
-      method: 'UPDATE',
+      method: 'PATCH',
       body: JSON.stringify({
         id: id,
         channelId: id,
@@ -89,14 +78,6 @@ export const editRating = (id, rating) => {
       }),
       headers: { 'Content-type': 'application/json; charset=utf-8' },
     })
-      .then((res) => res.json())
-      .then((json) => {
-        dispatch({
-          type: 'edit/rating/success',
-          payload: json,
-          id: id
-        });
-      });
   };
 };
 

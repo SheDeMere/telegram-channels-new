@@ -60,7 +60,13 @@ const Cards = (state = initialState, action) => {
     case 'edit/channel/success':
       return {
         ...state,
-        items: [...state.items, action.payload],
+        items: state.items.map(item => {
+          if (item.id === action.id) {
+            return action.payload
+          }
+
+          return item
+        })
       };
 
     case 'add/channel/success':
@@ -106,15 +112,14 @@ export const editChannel =
         followers: followers,
         desk: desk,
       }),
-      headers: {
-        'Content-type': 'application/json; charset=utf-8',
-      },
+      headers: { 'Content-type': 'application/json; charset=utf-8' },
     })
       .then((res) => res.json())
       .then((json) => {
         dispatch({
           type: 'edit/channel/success',
           payload: json,
+          id: id
         });
       });
   };
@@ -172,11 +177,13 @@ export function openDeleteChannelModal(show) {
     payload: !show,
   };
 }
+
 export function closeDeleteChannelModal() {
   return {
     type: 'close/deleteChannelModal',
   };
 }
+
 export function deleteChannel(id) {
   return (dispatch) => {
     fetch(`/channels/${id}`, {
@@ -191,6 +198,7 @@ export function deleteChannel(id) {
       });
   };
 }
+
 export const addChannel = (
   id,
   category,
@@ -226,7 +234,5 @@ export const addChannel = (
       });
   };
 };
-
-
 
 export default Cards;

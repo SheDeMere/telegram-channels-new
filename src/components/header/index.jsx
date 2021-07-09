@@ -5,7 +5,6 @@ import styles from './Header.module.css';
 import Authorization from './authorization';
 import { Route, Switch } from 'react-router-dom';
 
-
 function Header() {
   return (
     <div className={styles.header}>

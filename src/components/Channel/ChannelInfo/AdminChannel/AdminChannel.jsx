@@ -24,18 +24,22 @@ function AdminChannel(props) {
   const userName = useSelector((state) => {
     return state.header.name;
   });
+
   const addingReview = useSelector((state) => {
     return state.reviews.addingReview;
   });
+
   const deletingReview = useSelector((state) => {
     return state.reviews.deletingReview;
   });
+
   const showDeleteChannelModal = useSelector((state) => {
     return state.cards.showDeleteChannelModal;
   });
 
   const handleAddReview = (channelId, text, userName) => {
     dispatch(addReview(channelId, text, userName));
+    setText('')
   };
 
   const handleDeleteReview = (id) => {

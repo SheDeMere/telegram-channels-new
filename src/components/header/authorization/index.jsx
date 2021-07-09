@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 
 function Authorization() {
   const modal = useSelector((state) => state.header.modalWindow);
-
   return (
     modal && (
       <div className={styles['modal_back']}>

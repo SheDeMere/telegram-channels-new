@@ -34,7 +34,6 @@ function Inputs() {
 
   const handleClick = () => {
     setInfo(true);
-    window.location.reload();
     dispatch(editRating(id, rating));
     dispatch(editChannel(category, name, login, link, followers, desk, id));
   };

@@ -55,7 +55,7 @@
   "channels": [
     {
       "id": 1,
-      "categoryId": 1,
+      "categoryId": "1",
       "name": "NEXTA",
       "channelLogin": "@nexta",
       "imgUrl": "https://static10.tgstat.ru/channels/_0/c8/c8fb80e575f93c39de19ba289298caa9.jpg",
@@ -236,7 +236,7 @@
     {
       "id": 21,
       "categoryId": 1,
-      "name": "Testing function",
+      "name": "Testing ",
       "channelLogin": "@ReactJS",
       "imgUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1200px-Unofficial_JavaScript_logo_2.svg.png",
       "followers": "1m",
@@ -604,10 +604,40 @@
       "id": 42
     },
     {
-      "channelId": 1,
+      "channelId": 6,
       "name": "Admin",
-      "text": "dd",
-      "id": 43
+      "text": "Тест 1",
+      "id": 44
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 2",
+      "id": 45
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 3",
+      "id": 46
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 4",
+      "id": 47
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 5",
+      "id": 48
+    },
+    {
+      "channelId": 6,
+      "name": "Admin",
+      "text": "Тест 6",
+      "id": 49
     }
   ]
 }

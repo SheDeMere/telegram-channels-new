@@ -55,7 +55,7 @@
   "channels": [
     {
       "id": 1,
-      "categoryId": 1,
+      "categoryId": "1",
       "name": "NEXTA",
       "channelLogin": "@nexta",
       "imgUrl": "https://static10.tgstat.ru/channels/_0/c8/c8fb80e575f93c39de19ba289298caa9.jpg",
@@ -590,12 +590,6 @@
       "name": "Admin",
       "text": "JavaScript ",
       "id": 42
-    },
-    {
-      "channelId": 1,
-      "name": "Admin",
-      "text": "dd",
-      "id": 43
     },
     {
       "channelId": 6,

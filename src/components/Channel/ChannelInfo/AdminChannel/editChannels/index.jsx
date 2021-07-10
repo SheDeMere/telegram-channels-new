@@ -1,17 +1,15 @@
 import styles from './Edit.module.css';
 import ClearIcon from '@material-ui/icons/Clear';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom'
 import Inputs from './Inputs';
 
 function EditName() {
-  const handleClick = () => {
-    window.location.reload()
-  }
+  const channelId = parseInt(useParams().id);
   return (
     <div className={styles['modal_back']}>
       <div className={styles.modal}>
-        <Link to="/">
-          <ClearIcon className={styles.close} onClick={handleClick} />
+        <Link to={`/${channelId}`}>
+          <ClearIcon className={styles.close} />
         </Link>
         <div className={styles.forms}>
           <h3>Редактировать</h3>

@@ -64,6 +64,7 @@ function Inputs() {
         >
           ВОЙТИ
         </Button>
+        <p className={styles.prompt}>логин: admin, пароль: admin</p>
       </div>
     </div>
   );
